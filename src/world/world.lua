@@ -16,12 +16,26 @@ function World:new(game)
 	self.debug  = false
 end
 
-function World:spawn(name, data)
-	local item = Entities[name](data)
+-- Add entities to world
+--
+function World:add(...)
+	for __, item in pairs({...}) do
+		--
+		-- register in world
+		self.items[item.id] = item
 
-	table.insert(self.items, item)
+		-- register in world
+		self.grid:add(item)
+	end
+end
 
-	return item
+ -- Remove entities from world
+function World:remove(item)
+	--
+	-- unregister from world
+	self.items[item.id] = nil
+
+	self.grid:remove(item)
 end
 
 -- Tear down
@@ -43,13 +57,21 @@ end
 -- Update
 --
 function World:update(dt)
-    for i = #self.items, 1, -1 do
-        if self.items[i].remove then
-        	table.remove(self.items, i)
-        else
-        	self.items[i]:update(dt)
-        end
-    end
+    for __, item in pairs(self.items) do
+		item:update(dt)
+	end
+end
+
+-- Query items in cell
+--
+function World:queryCell(row, col)
+	local cell = self.grid:queryCell(row, col)
+	
+	if cell then
+		return cell.items
+	end
+
+	return {}
 end
 
 -- Keypressed
@@ -64,8 +86,8 @@ end
 --
 function World:draw()
 	-- Draw the map
-	love.graphics.setColor(1, 1, 1)
-	self.map:draw(0, 0, 3, 3)
+	love.graphics.setColor(Config.color.white)
+	self.map:draw(0, 0, Config.world.scale, Config.world.scale)
 
 	-- Draw all items
 	for __, item in pairs(self.items) do

@@ -7,17 +7,47 @@ local Crate = Base:extend()
 -- New
 --
 function Crate:new(data)
-	Base.new(self, _:merge({
-		name   = 'crate',
-		width  = Config.world.tileSize * 2,
-		height = Config.world.tileSize,
-	}, data))
+	Base.new(self, _:merge({ name = 'crate' }, data))
+	
+	--
+	-- properties
+	self.axis = data.axis or Vec2()
+
+	-- flags
+	self.isDamaged = false
 end
 
 -- Update
 --
-function Crate:update(dt)
+function Crate:tick()
+	--
+	-- damaged goods check
+	if not self:isSupported() then
+		self.isDamaged = true
+		self.axis      = Vec2(0, 1)
+	end
 
+	-- move
+	self:move(self, self.axis:unpack())
+
+	-- off screen check
+	-- TODO: below = miss
+	-- TODO: right/left = points
+end
+
+-- Is supported from below?
+--
+function Crate:isSupported()
+	local cell  = self:cell():below()
+	local items = cell.items
+
+	for __, item in pairs(items) do
+		if entity == 'belt' or entity == 'bot' then
+			return true
+		end
+	end
+
+	return false
 end
 
 return Crate

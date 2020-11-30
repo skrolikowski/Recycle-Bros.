@@ -57,5 +57,5 @@ Config = {
 }
 
 Formula = {
-	tick = function(lvl) return 1 end
+	tick = function(x) return 0.85 ^ x / x + 0.5 end
 }

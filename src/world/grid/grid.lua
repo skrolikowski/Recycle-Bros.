@@ -38,10 +38,14 @@ end
 
 ---- ---- ---- ----
 
+--
+--
 function Grid:dimensions()
 	return self.world.width, self.world.height
 end
 
+--
+--
 function Grid:aabb()
 	if not self._aabb then
 		self._aabb = AABB:fromContainer(0, 0, self:dimensions())
@@ -51,6 +55,14 @@ function Grid:aabb()
 end
 
 ---- ---- ---- ----
+
+function Grid:add(item, cell)
+	
+end
+
+function Grid:remove(item, cell)
+	
+end
 
 -- Query - get cell index at row/col-coords
 --
