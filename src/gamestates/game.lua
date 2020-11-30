@@ -57,8 +57,8 @@ function Game:enter(from, ...)
 
 	--
 	-- Bots, controlled by player
-	self.b1 = self.world:spawn('bot', { row = 3, col = 2,  color = Config.color.red })
-	self.b2 = self.world:spawn('bot', { row = 3, col = 9, color = Config.color.blue })
+	self.b1 = self.world:spawn('bot', { row = 4, col = 3, color = "yellow" })
+	self.b2 = self.world:spawn('bot', { row = 4, col = 8, color = "red" })
 
 end
 
