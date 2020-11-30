@@ -38,16 +38,10 @@ end
 
 ---- ---- ---- ----
 
--- Event: onPressed
+-- Get dimensions
 --
-function Gamestate:onPressed(...)
-	--
-end
-
--- Event: onReleased
---
-function Gamestate:onReleased(...)
-	--
+function Gamestate:dimensions()
+	return Config.width, Config.height
 end
 
 return Gamestate

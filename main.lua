@@ -17,27 +17,11 @@ require 'src.gamestates'
 --
 function love.load()
     Gamestate.registerEvents()
-    Gamestate.switch(Gamestates['title'])
+    Gamestate.switch(Gamestates['game'])
 end
 
 -- Update
 --
 function love.update(dt)
     Timer.update(dt)
-end
-
----- ---- ---- ----
-
--- Controls:
--- Key Pressed
---
-function love.keypressed(key)
-    Gamestate.current():onPressed(key)
-end
-
--- Controls:
--- Key Released
---
-function love.keyreleased(key)
-    Gamestate.current():onReleased(key)
 end

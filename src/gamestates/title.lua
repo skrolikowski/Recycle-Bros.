@@ -11,7 +11,7 @@ function Title:init(data)
 
 end
 
--- Event: onEnter
+-- Enter screen
 --
 function Title:enter(from, ...)
 	Base.enter(self, from, ...)
@@ -22,16 +22,27 @@ end
 -- Draw
 --
 function Title:draw()
-	--
+	lg.setBackgroundColor(Config.color.black)
+
 end
 
 ---- ---- ---- ----
 
--- Event: onPressed
+function Title:quitGame(key)
+	love.event.quit()
+end
+
+-- 
 --
-function Title:onPressed(key)
-	if key == 'escape' then
-		love.event.quit()
+function Title:quitGame(key)
+	love.event.quit()
+end
+
+-- 
+--
+function Title:keypressed(key)
+	if     key == 'space'  then self:startGame()
+	elseif key == 'escape' then self:quitGame()
 	end
 end
 

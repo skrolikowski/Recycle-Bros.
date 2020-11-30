@@ -10,8 +10,8 @@ function love.conf(t)
     t.window.title      = 'Major Jam 3: Retro'
     t.window.x          = 200
     t.window.y          = 50
-    t.window.width      = 800
-    t.window.height     = 600
+    t.window.width      = 96*3
+    t.window.height     = 96*3
     t.window.fullscreen = false
     t.window.highdpi    = true
     t.window.vsync      = true
