@@ -5,6 +5,7 @@
 pprint    = require 'vendor.pprint.pprint'
 Gamestate = require 'vendor.hump.gamestate'
 Timer     = require 'vendor.hump.timer'
+sti       = require 'vendor.sti.sti'
 
 -- local packages
 require 'src.toolbox'

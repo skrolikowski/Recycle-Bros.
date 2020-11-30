@@ -15,6 +15,7 @@ function World:new(game)
 	self.height = Config.height
 	self.grid   = Grid(self, Config.world.tileSize)
 	self.items  = {}
+	self.map    = sti('res/maps/test.lua')
 end
 
 function World:spawn(name, data)
@@ -52,6 +53,8 @@ function World:draw()
 		item:draw()
 	end
 
+	-- Draw our map and grid overlay
+	self.map:draw(0, 0, 3, 3)
 	self.grid:draw()
 end
 
