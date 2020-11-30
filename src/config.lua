@@ -18,8 +18,8 @@ Config = {
 	width  = lg.getWidth(),
 	height = lg.getHeight(),
 	world  = {
-		scale    = 3,
-		tileSize = 8*3,
+		scale    = 5,
+		tileSize = 8*5,
 	},
 
 	--------------------

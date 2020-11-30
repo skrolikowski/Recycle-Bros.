@@ -8,7 +8,7 @@ local Game = Base:extend()
 function Game:init(data)
 	Base.init(self, { name = 'game' })
 
-	lg.setFont(Config.ui.font.lg)
+	lg.setFont(Config.ui.font.xl)
 
 	--
 	-- flags
@@ -35,9 +35,9 @@ function Game:draw()
 	lg.setColor(1, 1, 1)
 	self.map:draw(0, 0, 3, 3)
 
-	lg.print("Wave: " .. self.wave, 10, 235)
-	lg.print("Points: " .. self.points, 10, 255)
-	lg.print("Miss: " .. self.misses, 220, 255)
+	lg.print("Wave: " .. self.wave, 10, 385)
+	lg.print("Points: " .. self.points, 10, 415)
+	lg.print("Miss: " .. self.misses, 355, 415)
 
 	self.world:draw()
 end
@@ -59,8 +59,8 @@ function Game:enter(from, ...)
 
 	--
 	-- bots, controlled by player
-	self.b1 = Entities['bot']({ world = self.world, row = 3, col = 3  })
-	self.b2 = Entities['bot']({ world = self.world, row = 3, col = 10 })
+	self.b1 = Entities['bot']({ world = self.world, row = 4, col = 3, color="yellow" })
+	self.b2 = Entities['bot']({ world = self.world, row = 4, col = 8, color="red" })
 
 	self.world:add(self.b1, self.b2)
 
