@@ -36,6 +36,12 @@ function Entity:destroy(other)
     self.remove = true
 end
 
+-- Get current cell
+--
+function Entity:cell()
+	return self.world.grid:queryCell(self.row, self.col)
+end
+
 -- Game tick
 --
 function Entity:tick()
@@ -52,35 +58,7 @@ end
 --
 function Entity:draw()
 	lg.setColor(self.color)
-	lg.rectangle('fill', self:aabb():container())
-end
-
----- ---- ---- ----
-
--- Get current cell
---
-function Entity:cell()
-	return self.world.grid:queryCell(self.row, self.col)
-end
-
--- Get dimensions
---
-function Entity:dimensions()
-	return Config.world.tileSize, Config.world.tileSize
-end
-
--- Axis-aligned bounding box
---
-function Entity:aabb()
-	if not self._aabb then
-		local x    = self.col * Config.world.tileSize
-		local y    = self.row * Config.world.tileSize
-		local w, h = self:dimensions()
-
-		return AABB(x, y, x+w, y+h)
-	end
-
-	return self._aabb
+	lg.rectangle('fill', self:cell():container())
 end
 
 return Entity

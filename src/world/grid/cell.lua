@@ -7,9 +7,22 @@ local Cell   = Modern:extend()
 -- New Cell
 --
 function Cell:new(grid, row, col)
-	self.grid = grid
-	self.row  = row
-	self.col  = col
+	self.grid  = grid
+	self.row   = row
+	self.col   = col
+	self.items = {}
+end
+
+-- Remove item
+--
+function Cell:add(item)
+	self.items[item.id] = item
+end
+
+-- Add item
+--
+function Cell:remove(item)
+	self.items[item.id] = nil
 end
 
 function Cell:unpack()

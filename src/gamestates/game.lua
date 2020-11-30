@@ -59,8 +59,8 @@ function Game:enter(from, ...)
 
 	--
 	-- bots, controlled by player
-	self.b1 = Entities['bot']({ world = self.world, row = 3, col = 2 })
-	self.b2 = Entities['bot']({ world = self.world, row = 3, col = 9 })
+	self.b1 = Entities['bot']({ world = self.world, row = 3, col = 3  })
+	self.b2 = Entities['bot']({ world = self.world, row = 3, col = 10 })
 
 	self.world:add(self.b1, self.b2)
 

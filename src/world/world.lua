@@ -11,7 +11,7 @@ function World:new(game)
 	self.map    = sti('res/maps/test.lua')
 	self.width  = self.map.width  * self.map.tilewidth  * Config.world.scale
 	self.height = self.map.height * self.map.tileheight * Config.world.scale
-	self.grid   = Grid(self, self.map.tilewidth)
+	self.grid   = Grid(self, self.map.tilewidth * Config.world.scale)
 	self.items  = {}
 	self.debug  = false
 end
@@ -25,7 +25,7 @@ function World:add(...)
 		self.items[item.id] = item
 
 		-- register in world
-		self.grid:add(item)
+		self.grid:add(item, item:cell())
 	end
 end
 
@@ -35,7 +35,7 @@ function World:remove(item)
 	-- unregister from world
 	self.items[item.id] = nil
 
-	self.grid:remove(item)
+	self.grid:remove(item, item:cell())
 end
 
 -- Tear down
@@ -96,9 +96,9 @@ function World:draw()
 	end
 
 	-- Draw the grid
-	if self.debug then
+	-- if self.debug then
 		self.grid:draw()
-	end
+	-- end
 end
 
 return World
