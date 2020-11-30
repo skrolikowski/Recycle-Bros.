@@ -9,8 +9,13 @@ function Game:init(data)
 	Base.init(self, { name = 'game' })
 	--
 
+	lg.setFont(Config.ui.font.lg)
+
 	--
 	self.isPaused = false
+	self.wave = 1
+	self.points = 0
+	self.misses = 0
 end
 
 -- Update
@@ -26,6 +31,14 @@ end
 function Game:draw()
 	lg.setBackgroundColor(Config.color.black)
 
+	-- Draw the map
+	lg.setColor(1, 1, 1)
+	self.map:draw(0, 0, 3, 3)
+
+	lg.print("Wave: " .. self.wave, 10, 235)
+	lg.print("Points: " .. self.points, 10, 255)
+	lg.print("Miss: " .. self.misses, 220, 255)
+
 	self.world:draw()
 end
 
@@ -33,12 +46,11 @@ end
 --
 function Game:enter(from, ...)
 	Base.enter(self, from, ...)
-	--
-	-- local STI = require 'vendor.sti.sti'
 
-	-- self.map    = STI('')
-	-- self.width  = self.map.width  * self.map.tilewidth
-	-- self.height = self.map.height * self.map.tileheight
+	--
+	self.map    = sti('res/maps/test.lua')
+	self.width  = self.map.width  * self.map.tilewidth
+	self.height = self.map.height * self.map.tileheight
 
 	--
 	self.world = World(self)
@@ -47,7 +59,6 @@ function Game:enter(from, ...)
 	-- Bots, controlled by player
 	self.b1 = self.world:spawn('bot', { row = 3, col = 2,  color = Config.color.red })
 	self.b2 = self.world:spawn('bot', { row = 3, col = 9, color = Config.color.blue })
-
 
 end
 
