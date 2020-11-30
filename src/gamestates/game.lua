@@ -7,11 +7,11 @@ local Game = Base:extend()
 --
 function Game:init(data)
 	Base.init(self, { name = 'game' })
-	--
 
 	lg.setFont(Config.ui.font.lg)
 
 	--
+	-- flags
 	self.isPaused = false
 	self.wave = 1
 	self.points = 0
@@ -46,20 +46,32 @@ end
 --
 function Game:enter(from, ...)
 	Base.enter(self, from, ...)
-
 	--
+
+	-- map
 	self.map    = sti('res/maps/test.lua')
 	self.width  = self.map.width  * self.map.tilewidth
 	self.height = self.map.height * self.map.tileheight
 
-	--
+	-- level properties
 	self.world = World(self)
+	self.level = self.settings.level or 1
 
 	--
-	-- Bots, controlled by player
-	self.b1 = self.world:spawn('bot', { row = 3, col = 2,  color = Config.color.red })
-	self.b2 = self.world:spawn('bot', { row = 3, col = 9, color = Config.color.blue })
+	-- bots, controlled by player
+	self.b1 = Entities['bot']({ world = self.world, row = 3, col = 3  })
+	self.b2 = Entities['bot']({ world = self.world, row = 3, col = 10 })
 
+	self.world:add(self.b1, self.b2)
+
+	-- create spawner
+	-- self.spawner = Spawner(self, self.map.layers['spawns'])
+
+	-- tick - based on level
+	Timer.every(Formula.tick(self.level), function()
+		-- self.spawner:tick()
+		self.world:tick()
+	end)
 end
 
 -- Pause game

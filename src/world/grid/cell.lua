@@ -7,9 +7,22 @@ local Cell   = Modern:extend()
 -- New Cell
 --
 function Cell:new(grid, row, col)
-	self.grid = grid
-	self.row  = row
-	self.col  = col
+	self.grid  = grid
+	self.row   = row
+	self.col   = col
+	self.items = {}
+end
+
+-- Remove item
+--
+function Cell:add(item)
+	self.items[item.id] = item
+end
+
+-- Add item
+--
+function Cell:remove(item)
+	self.items[item.id] = nil
 end
 
 function Cell:unpack()
@@ -64,11 +77,35 @@ end
 --
 function Cell:queryNeighbors()
 	return {
-        top    = self.grid:getCell(self.row - 1, self.col + 0),
-		left   = self.grid:getCell(self.row + 0, self.col - 1),
-		right  = self.grid:getCell(self.row + 0, self.col + 1),
-		bottom = self.grid:getCell(self.row + 1, self.col + 0),
+        top    = self:above(),
+		left   = self:left(),
+		right  = self:right(),
+		bottom = self:below(),
     }
+end
+
+-- Get neighbor below
+--
+function Cell:below()
+	return self.grid:queryCell(self.row + 1, self.col + 0)
+end
+
+-- Get neighbor above
+--
+function Cell:above()
+	return self.grid:queryCell(self.row - 1, self.col + 0)
+end
+
+-- Get neighbor to the left
+--
+function Cell:left()
+	return self.grid:queryCell(self.row + 0, self.col - 1)
+end
+
+-- Get neighbor to the right
+--
+function Cell:right()
+	return self.grid:queryCell(self.row + 0, self.col + 1)
 end
 
 ---- ---- ---- ----
