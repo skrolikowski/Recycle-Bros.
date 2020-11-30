@@ -39,11 +39,11 @@ Config = {
 	--
 	ui = {
 		font = {
-			xs = lg.newFont('res/ui/fonts/Marksman.ttf', 12),
-			sm = lg.newFont('res/ui/fonts/Marksman.ttf', 18),
-			md = lg.newFont('res/ui/fonts/Marksman.ttf', 24),
-			lg = lg.newFont('res/ui/fonts/Marksman.ttf', 32),
-			xl = lg.newFont('res/ui/fonts/Marksman.ttf', 64)
+			xs = lg.newFont('res/ui/Pocket.ttf', 12),
+			sm = lg.newFont('res/ui/Pocket.ttf', 18),
+			md = lg.newFont('res/ui/Pocket.ttf', 24),
+			lg = lg.newFont('res/ui/Pocket.ttf', 32),
+			xl = lg.newFont('res/ui/Pocket.ttf', 64)
 		}
 	},
 

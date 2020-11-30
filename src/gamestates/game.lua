@@ -8,9 +8,14 @@ local Game = Base:extend()
 function Game:init(data)
 	Base.init(self, { name = 'game' })
 
+	lg.setFont(Config.ui.font.lg)
+
 	--
 	-- flags
 	self.isPaused = false
+	self.wave = 1
+	self.points = 0
+	self.misses = 0
 end
 
 -- Update
@@ -26,6 +31,14 @@ end
 function Game:draw()
 	lg.setBackgroundColor(Config.color.black)
 
+	-- Draw the map
+	lg.setColor(1, 1, 1)
+	self.map:draw(0, 0, 3, 3)
+
+	lg.print("Wave: " .. self.wave, 10, 235)
+	lg.print("Points: " .. self.points, 10, 255)
+	lg.print("Miss: " .. self.misses, 220, 255)
+
 	self.world:draw()
 end
 
@@ -34,6 +47,11 @@ end
 function Game:enter(from, ...)
 	Base.enter(self, from, ...)
 	--
+
+	-- map
+	self.map    = sti('res/maps/test.lua')
+	self.width  = self.map.width  * self.map.tilewidth
+	self.height = self.map.height * self.map.tileheight
 
 	-- level properties
 	self.world = World(self)

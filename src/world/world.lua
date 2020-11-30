@@ -85,6 +85,7 @@ end
 -- Draw
 --
 function World:draw()
+	--
 	-- Draw the map
 	love.graphics.setColor(Config.color.white)
 	self.map:draw(0, 0, Config.world.scale, Config.world.scale)
