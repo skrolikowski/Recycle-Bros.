@@ -18,7 +18,7 @@ require 'src.gamestates'
 --
 function love.load()
     Gamestate.registerEvents()
-    Gamestate.switch(Gamestates['game'])
+    Gamestate.switch(Gamestates['game'], { level = 1 })
 end
 
 -- Update

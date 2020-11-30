@@ -7,11 +7,11 @@ local Game = Base:extend()
 --
 function Game:init(data)
 	Base.init(self, { name = 'game' })
-	--
 
-	lg.setFont(Config.ui.font.lg)
+	lg.setFont(Config.ui.font.xl)
 
 	--
+	-- flags
 	self.isPaused = false
 	self.wave = 1
 	self.points = 0
@@ -35,9 +35,9 @@ function Game:draw()
 	lg.setColor(1, 1, 1)
 	self.map:draw(0, 0, 3, 3)
 
-	lg.print("Wave: " .. self.wave, 10, 235)
-	lg.print("Points: " .. self.points, 10, 255)
-	lg.print("Miss: " .. self.misses, 220, 255)
+	lg.print("Wave: " .. self.wave, 10, 385)
+	lg.print("Points: " .. self.points, 10, 415)
+	lg.print("Miss: " .. self.misses, 355, 415)
 
 	self.world:draw()
 end
@@ -46,20 +46,32 @@ end
 --
 function Game:enter(from, ...)
 	Base.enter(self, from, ...)
-
 	--
+
+	-- map
 	self.map    = sti('res/maps/test.lua')
 	self.width  = self.map.width  * self.map.tilewidth
 	self.height = self.map.height * self.map.tileheight
 
-	--
+	-- level properties
 	self.world = World(self)
+	self.level = self.settings.level or 1
 
 	--
-	-- Bots, controlled by player
-	self.b1 = self.world:spawn('bot', { row = 4, col = 3, color = "yellow" })
-	self.b2 = self.world:spawn('bot', { row = 4, col = 8, color = "red" })
+	-- bots, controlled by player
+	self.b1 = Entities['bot']({ world = self.world, row = 4, col = 3, color="yellow" })
+	self.b2 = Entities['bot']({ world = self.world, row = 4, col = 8, color="red" })
 
+	self.world:add(self.b1, self.b2)
+
+	-- create spawner
+	-- self.spawner = Spawner(self, self.map.layers['spawns'])
+
+	-- tick - based on level
+	Timer.every(Formula.tick(self.level), function()
+		-- self.spawner:tick()
+		self.world:tick()
+	end)
 end
 
 -- Pause game

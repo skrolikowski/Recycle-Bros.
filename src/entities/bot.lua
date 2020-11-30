@@ -27,17 +27,22 @@ function Bot:update(dt)
 	end
 end
 
-function Bot:move(dc, dr)
-	local futureRow = self.row + dr
+function Bot:move(dx, dy)
+	futureY = self.row + dy
 
-	print(futureRow)
-
-	if futureRow >= 2 and futureRow <= 8 then
-		print("move")
-		self.row = self.row + dr
+	if futureY >= 2 and futureY <= 8 then
+		Base.move(self, dx, dy)
 	end
 
-	self.col = self.col + dc
+-- 	--
+
+-- 	-- check for crate
+	local crate = self:isBelowCrate()
+
+-- 	-- expedite
+	if crate and not crate.isDamaged then
+		crate:move(crate.axis)
+	end
 end
 
 function Bot:draw()
@@ -46,7 +51,24 @@ function Bot:draw()
 	local x = self.col * Config.world.tileSize
 	local y = self.row * Config.world.tileSize
 
-	lg.draw(self.animation.spriteSheet, self.animation.quads[spriteNum], x, y, 0, 3)
+	lg.draw(self.animation.spriteSheet, self.animation.quads[spriteNum], x, y, 0, Config.world.scale)
+	--
+
+end
+
+-- Is bot below crate?
+--
+function Bot:isBelowCrate()
+	local cell  = self:cell():above()
+	local items = cell.items or {}
+
+	for __, item in pairs(items) do
+		if item == 'crate' then
+			return item
+		end
+	end
+
+	return false
 end
 
 return Bot
