@@ -24,7 +24,7 @@ end
 -- Draw
 --
 function Game:draw()
-	lg.setBackgroundColor(Config.color.white)
+	lg.setBackgroundColor(Config.color.black)
 
 	self.world:draw()
 end
@@ -73,7 +73,7 @@ end
 
 ---- ---- ---- ----
 
--- 
+--
 --
 function Game:keypressed(key)
 	if     key == 'up'     then self.b2:move(0, -1)
