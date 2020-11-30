@@ -18,6 +18,7 @@ Config = {
 	width  = lg.getWidth(),
 	height = lg.getHeight(),
 	world  = {
+		scale    = 3,
 		tileSize = 8*3,
 	},
 
@@ -53,5 +54,8 @@ Config = {
 
 	},
 
+}
 
+Formula = {
+	tick = function(lvl) return 1 end
 }

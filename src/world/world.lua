@@ -7,15 +7,12 @@ local World  = Modern:extend()
 -- New
 --
 function World:new(game)
-	self.game  = game
-	-- self.width  = game.map.width  * game.map.tilewidth
-	-- self.height = game.map.height * game.map.tileheight
-	-- self.grid   = Grid(self, game.map.tilewidth)
-	self.width  = Config.width
-	self.height = Config.height
-	self.grid   = Grid(self, Config.world.tileSize)
-	self.items  = {}
+	self.game   = game
 	self.map    = sti('res/maps/test.lua')
+	self.width  = self.map.width  * self.map.tilewidth  * Config.world.scale
+	self.height = self.map.height * self.map.tileheight * Config.world.scale
+	self.grid   = Grid(self, self.map.tilewidth)
+	self.items  = {}
 	self.debug  = false
 end
 
@@ -33,6 +30,14 @@ function World:destroy()
     for i = #self.items, 1, -1 do
         table.remove(self.items, i)
     end
+end
+
+-- Game tick
+--
+function World:tick()
+	for __, item in pairs(self.items) do
+		item:tick()
+	end
 end
 
 -- Update

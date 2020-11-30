@@ -7,9 +7,9 @@ local Game = Base:extend()
 --
 function Game:init(data)
 	Base.init(self, { name = 'game' })
-	--
 
 	--
+	-- flags
 	self.isPaused = false
 end
 
@@ -34,14 +34,14 @@ end
 function Game:enter(from, ...)
 	Base.enter(self, from, ...)
 	--
-	-- local STI = require 'vendor.sti.sti'
-
-	-- self.map    = STI('')
-	-- self.width  = self.map.width  * self.map.tilewidth
-	-- self.height = self.map.height * self.map.tileheight
-
 	--
 	self.world = World(self)
+	self.level = self.settings.level or 1
+
+	-- Tick - based on level
+	Timer.every(Formula.tick(self.level), function()
+		self.world:tick()
+	end)
 
 	--
 	-- Bots, controlled by player
