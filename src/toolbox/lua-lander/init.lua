@@ -6,17 +6,17 @@ _ = {}
 _.__index = index
 
 -- variables
-require 'lua-lander.mods.variables'
+require 'src.toolbox.lua-lander.mods.variables'
 
 --- modules
-require 'lua-lander.mods.array'
-require 'lua-lander.mods.assert'
-require 'lua-lander.mods.color'
-require 'lua-lander.mods.event'
-require 'lua-lander.mods.func'
-require 'lua-lander.mods.lang'
-require 'lua-lander.mods.math'
-require 'lua-lander.mods.number'
-require 'lua-lander.mods.string'
-require 'lua-lander.mods.table'
-require 'lua-lander.mods.util'
+require 'src.toolbox.lua-lander.mods.array'
+require 'src.toolbox.lua-lander.mods.assert'
+require 'src.toolbox.lua-lander.mods.color'
+require 'src.toolbox.lua-lander.mods.event'
+require 'src.toolbox.lua-lander.mods.func'
+require 'src.toolbox.lua-lander.mods.lang'
+require 'src.toolbox.lua-lander.mods.math'
+require 'src.toolbox.lua-lander.mods.number'
+require 'src.toolbox.lua-lander.mods.string'
+require 'src.toolbox.lua-lander.mods.table'
+require 'src.toolbox.lua-lander.mods.util'
