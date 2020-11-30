@@ -18,7 +18,7 @@ Config = {
 	width  = lg.getWidth(),
 	height = lg.getHeight(),
 	world  = {
-		tileSize = 16,
+		tileSize = 8*3,
 	},
 
 	--------------------
@@ -26,7 +26,8 @@ Config = {
 	--
 	color = {
 	    none    = { 1, 1, 1, 0 },
-	    debug   = { _:color('red-500') },
+	    red     = { _:color('red-500') },
+	    blue    = { _:color('blue-500') },
 		white   = { _:color('white') },
 		black   = { _:color('black') },
 	    overlay = { 0, 0, 0, 0.75 },
