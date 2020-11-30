@@ -25,4 +25,14 @@ function Title:draw()
 	--
 end
 
+---- ---- ---- ----
+
+-- Event: onPressed
+--
+function Title:onPressed(key)
+	if key == 'escape' then
+		love.event.quit()
+	end
+end
+
 return Title

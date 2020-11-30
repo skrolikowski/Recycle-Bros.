@@ -41,19 +41,13 @@ end
 -- Event: onPressed
 --
 function Gamestate:onPressed(...)
-	print('onPressed', ...)
+	--
 end
 
 -- Event: onReleased
 --
 function Gamestate:onReleased(...)
-	print('onReleased', ...)
-end
-
--- Event: Quit Game
---
-function Gamestate:onExit()
-	love.event.quit()
+	--
 end
 
 return Gamestate

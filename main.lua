@@ -9,6 +9,8 @@ Timer     = require 'vendor.hump.timer'
 -- local packages
 require 'src.toolbox'
 require 'src.config'
+require 'src.world'
+require 'src.entities'
 require 'src.gamestates'
 
 -- load
@@ -30,12 +32,12 @@ end
 -- Key Pressed
 --
 function love.keypressed(key)
-    Gamestate.current():onPressed(_.__lower('key_'..key))
+    Gamestate.current():onPressed(key)
 end
 
 -- Controls:
 -- Key Released
 --
 function love.keyreleased(key)
-    Gamestate.current():onReleased(_.__lower('key_'..key))
+    Gamestate.current():onReleased(key)
 end
