@@ -8,9 +8,6 @@ local World  = Modern:extend()
 --
 function World:new(game)
 	self.game  = game
-	-- self.width  = game.map.width  * game.map.tilewidth
-	-- self.height = game.map.height * game.map.tileheight
-	-- self.grid   = Grid(self, game.map.tilewidth)
 	self.width  = Config.width
 	self.height = Config.height
 	self.grid   = Grid(self, Config.world.tileSize)
