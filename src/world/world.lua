@@ -58,14 +58,19 @@ end
 -- Draw
 --
 function World:draw()
+	-- Draw the map
+	love.graphics.setColor(1, 1, 1)
+	self.map:draw(0, 0, 3, 3)
+
+	-- Draw all items
 	for __, item in pairs(self.items) do
 		item:draw()
 	end
 
-	-- Draw our map and grid overlay
-	self.map:draw(0, 0, 3, 3)
-
-	if self.debug then self.grid:draw() end
+	-- Draw the grid
+	if self.debug then
+		self.grid:draw()
+	end
 end
 
 return World
