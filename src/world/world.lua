@@ -16,6 +16,7 @@ function World:new(game)
 	self.grid   = Grid(self, Config.world.tileSize)
 	self.items  = {}
 	self.map    = sti('res/maps/test.lua')
+	self.debug  = false
 end
 
 function World:spawn(name, data)
@@ -46,6 +47,14 @@ function World:update(dt)
     end
 end
 
+-- Keypressed
+--
+function World:keypressed(key)
+	if key == 'g' then
+		self.debug = not self.debug
+	end
+end
+
 -- Draw
 --
 function World:draw()
@@ -55,7 +64,8 @@ function World:draw()
 
 	-- Draw our map and grid overlay
 	self.map:draw(0, 0, 3, 3)
-	self.grid:draw()
+
+	if self.debug then self.grid:draw() end
 end
 
 return World

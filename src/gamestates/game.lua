@@ -76,6 +76,8 @@ end
 --
 --
 function Game:keypressed(key)
+	self.world:keypressed(key)
+
 	if     key == 'up'     then self.b2:move(0, -1)
 	elseif key == 'down'   then self.b2:move(0,  1)
 	elseif key == 'w'      then self.b1:move(0, -1)
