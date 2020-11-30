@@ -26,6 +26,10 @@ end
 function Game:draw()
 	lg.setBackgroundColor(Config.color.black)
 
+	-- Draw the map
+	love.graphics.setColor(1, 1, 1)
+	self.map:draw(0, 0, 3, 3)
+
 	self.world:draw()
 end
 
@@ -33,12 +37,11 @@ end
 --
 function Game:enter(from, ...)
 	Base.enter(self, from, ...)
-	--
-	-- local STI = require 'vendor.sti.sti'
 
-	-- self.map    = STI('')
-	-- self.width  = self.map.width  * self.map.tilewidth
-	-- self.height = self.map.height * self.map.tileheight
+	--
+	self.map    = sti('res/maps/test.lua')
+	self.width  = self.map.width  * self.map.tilewidth
+	self.height = self.map.height * self.map.tileheight
 
 	--
 	self.world = World(self)

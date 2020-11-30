@@ -15,7 +15,6 @@ function World:new(game)
 	self.height = Config.height
 	self.grid   = Grid(self, Config.world.tileSize)
 	self.items  = {}
-	self.map    = sti('res/maps/test.lua')
 	self.debug  = false
 end
 
@@ -58,10 +57,6 @@ end
 -- Draw
 --
 function World:draw()
-	-- Draw the map
-	love.graphics.setColor(1, 1, 1)
-	self.map:draw(0, 0, 3, 3)
-
 	-- Draw all items
 	for __, item in pairs(self.items) do
 		item:draw()
