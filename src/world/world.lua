@@ -13,6 +13,9 @@ function World:new(game)
 	self.height = self.map.height * self.map.tileheight * Config.world.scale
 	self.grid   = Grid(self, self.map.tilewidth * Config.world.scale)
 	self.items  = {}
+	self.points = 0
+	self.wave = 1
+	self.misses = 0
 	self.debug  = false
 end
 
@@ -66,7 +69,7 @@ end
 --
 function World:queryCell(row, col)
 	local cell = self.grid:queryCell(row, col)
-	
+
 	if cell then
 		return cell.items
 	end
@@ -85,20 +88,15 @@ end
 -- Draw
 --
 function World:draw()
-	--
-	-- Draw the map
-	love.graphics.setColor(Config.color.white)
-	self.map:draw(0, 0, Config.world.scale, Config.world.scale)
-
 	-- Draw all items
 	for __, item in pairs(self.items) do
 		item:draw()
 	end
 
 	-- Draw the grid
-	-- if self.debug then
+	if self.debug then
 		self.grid:draw()
-	-- end
+	end
 end
 
 return World

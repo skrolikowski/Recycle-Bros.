@@ -13,15 +13,13 @@ function Game:init(data)
 	--
 	-- flags
 	self.isPaused = false
-	self.wave = 1
-	self.points = 0
-	self.misses = 0
 end
 
 -- Update
 --
 function Game:update(dt)
 	if not self.isPaused then
+		self.map:update(dt)
 		self.world:update(dt)
 	end
 end
@@ -29,15 +27,15 @@ end
 -- Draw
 --
 function Game:draw()
-	lg.setBackgroundColor(Config.color.black)
+	lg.setBackgroundColor(Util:RGBA(3, 14, 38, 255))
 
 	-- Draw the map
-	lg.setColor(1, 1, 1)
-	self.map:draw(0, 0, 3, 3)
+	love.graphics.setColor(Config.color.white)
+	self.map:draw(0, 0, Config.world.scale, Config.world.scale)
 
-	lg.print("Wave: " .. self.wave, 10, 385)
-	lg.print("Points: " .. self.points, 10, 415)
-	lg.print("Miss: " .. self.misses, 355, 415)
+	lg.print("Wave: " .. self.world.wave, 10, 385)
+	lg.print("Points: " .. self.world.points, 10, 415)
+	lg.print("Miss: " .. self.world.misses, 355, 415)
 
 	self.world:draw()
 end
