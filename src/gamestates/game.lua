@@ -8,8 +8,6 @@ local Game = Base:extend()
 function Game:init(data)
 	Base.init(self, { name = 'game' })
 
-	lg.setFont(Config.ui.font.xl)
-
 	--
 	-- flags
 	self.isPaused = false
@@ -29,15 +27,24 @@ end
 function Game:draw()
 	lg.setBackgroundColor(Util:RGBA(3, 14, 38, 255))
 
-	-- Draw the map
-	love.graphics.setColor(Config.color.white)
-	self.map:draw(0, 0, Config.world.scale, Config.world.scale)
+	lg.push()
+		lg.scale(Config.world.scale, Config.world.scale)
+		lg.setColor(Config.color.white)
 
-	lg.print("Wave: " .. self.world.wave, 10, 385)
-	lg.print("Points: " .. self.world.points, 10, 415)
-	lg.print("Miss: " .. self.world.misses, 355, 415)
+		-- draw map
+		self.map:drawTileLayer('Background')
+		self.map:drawTileLayer('Entities')
 
-	self.world:draw()
+		-- draw entities
+		self.world:draw()
+	lg.pop()
+
+	-- ui
+	lg.setFont(Config.ui.font.xl)
+
+	lg.print("Wave: " .. self.wave, 10, 385)
+	lg.print("Points: " .. self.points, 10, 415)
+	lg.print("Miss: " .. self.misses, 355, 415)
 end
 
 -- Enter scene
@@ -51,23 +58,22 @@ function Game:enter(from, ...)
 	self.width  = self.map.width  * self.map.tilewidth
 	self.height = self.map.height * self.map.tileheight
 
-	-- level properties
-	self.world = World(self)
-	self.level = self.settings.level or 1
+	-- world properties
+	self.world  = World(self)
+	self.wave   = self.settings.wave or 1
+	self.points = 0
+	self.misses = 0
 
 	--
 	-- bots, controlled by player
-	self.b1 = Entities['bot']({ world = self.world, row = 4, col = 3, color="yellow" })
-	self.b2 = Entities['bot']({ world = self.world, row = 4, col = 8, color="red" })
+	self.b1 = Entities['bot']()({ game = self, row = 5, col = 4, color="yellow" })
+	self.b2 = Entities['bot']()({ game = self, row = 5, col = 9, color="red" })
 
-	self.world:add(self.b1, self.b2)
+	-- spawn entities
+	Spawner(self, self.map.layers):load('Belt','Spawn')
 
-	-- create spawner
-	-- self.spawner = Spawner(self, self.map.layers['spawns'])
-
-	-- tick - based on level
-	Timer.every(Formula.tick(self.level), function()
-		-- self.spawner:tick()
+	-- tick - based on wave
+	Timer.every(Formula.tick(self.wave), function()
 		self.world:tick()
 	end)
 end
@@ -97,12 +103,11 @@ end
 --
 --
 function Game:keypressed(key)
-	self.world:keypressed(key)
-
 	if     key == 'up'     then self.b2:move(0, -1)
 	elseif key == 'down'   then self.b2:move(0,  1)
 	elseif key == 'w'      then self.b1:move(0, -1)
 	elseif key == 's'      then self.b1:move(0,  1)
+	elseif key == 'g'      then self.world.debug = not self.world.debug
 	elseif key == 'escape' then love.event.quit()
 	end
 end

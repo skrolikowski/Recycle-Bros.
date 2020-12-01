@@ -14,6 +14,9 @@ require 'src.world'
 require 'src.entities'
 require 'src.gamestates'
 
+-- settings
+love.window.setMode( Config.world.width, Config.world.height)
+
 -- load
 --
 function love.load()
