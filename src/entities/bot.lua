@@ -34,26 +34,25 @@ function Bot:move(dx, dy)
 		Base.move(self, dx, dy)
 	end
 
--- 	--
+	-- -- check for crate
+	-- local crate = self:isBelowCrate()
 
--- 	-- check for crate
-	local crate = self:isBelowCrate()
-
--- 	-- expedite
-	if crate and not crate.isDamaged then
-		crate:move(crate.axis)
-	end
+	-- -- expedite
+	-- if crate and not crate.isDamaged then
+	-- 	crate:move(crate.axis:unpack())
+	-- end
 end
 
+-- Draw
+--
 function Bot:draw()
-	local spriteNum = math.floor(self.animation.currentTime / self.animation.duration * #self.animation.quads) + 1
-
-	local x = self.col * Config.world.tileSize
-	local y = self.row * Config.world.tileSize
-
-	lg.draw(self.animation.spriteSheet, self.animation.quads[spriteNum], x, y, 0, Config.world.scale)
+	Base.draw(self)
 	--
+	local spriteNum = math.floor(self.animation.currentTime / self.animation.duration * #self.animation.quads) + 1
+	local x, y      = self:position()
 
+	lg.setColor(Config.color.white)
+	lg.draw(self.animation.spriteSheet, self.animation.quads[spriteNum], x, y)
 end
 
 -- Is bot below crate?

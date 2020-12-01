@@ -56,14 +56,6 @@ end
 
 ---- ---- ---- ----
 
-function Grid:add(item, cell)
-	cell:add(item)
-end
-
-function Grid:remove(item, cell)
-	cell:remove(item)
-end
-
 -- Query - get cell index at row/col-coords
 --
 function Grid:queryIndex(row, col)
@@ -76,6 +68,43 @@ function Grid:queryCell(row, col)
 	if self:isValid(row, col) then
 		return self.cells[self:queryIndex(row, col)]
 	end
+end
+
+-- Query - get cell at x/y-coords
+--
+function Grid:queryRowColAtPoint(x, y)
+	return _.__floor(y / self.cellSize) + 1,
+	       _.__floor(x / self.cellSize) + 1
+end
+
+-- Query - get row/col at x/y-coords
+--
+function Grid:queryCellAtPoint(x, y)
+	return self:queryCell(
+		self:queryRowColAtPoint(x, y)
+	)
+end
+
+-- Query - get cells in bounds
+--
+function Grid:queryCellsInBounds(aabb)
+	local l, t, r, b = aabb:unpack()
+	local r1, c1     = self:queryRowColAtPoint(l, t)
+	local r2, c2     = self:queryRowColAtPoint(r-0.01, b-0.01)
+	local cells      = {}
+	local cell
+
+	for r = r1, r2 do
+		for c = c1, c2 do
+			cell = self:queryCell(r, c)
+			
+			if cell then
+				table.insert(cells, cell)
+			end
+		end
+	end
+
+	return cells
 end
 
 ---- ---- ---- ----

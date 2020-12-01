@@ -1,6 +1,7 @@
 --
 --
-World = require 'src.world.world'
+World   = require 'src.world.world'
+Spawner = require 'src.world.spawner'
 
 --
 Grid = require 'src.world.grid.grid'
