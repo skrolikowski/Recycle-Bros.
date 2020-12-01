@@ -9,3 +9,6 @@ require 'src.toolbox.lua-lander'
 AABB    = require 'src.toolbox.math.aabb'
 Segment = require 'src.toolbox.math.segment'
 Vec2    = require 'src.toolbox.math.vec2'
+
+-- graphics
+Spritesheet = require 'src.toolbox.graphics.spritesheet'

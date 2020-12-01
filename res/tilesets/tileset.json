@@ -1,0 +1,29 @@
+{
+	"TextureAtlas": {
+		"SubTexture": [
+			{
+				"name": "crate1.png",
+				"x": "0",
+				"y": "0",
+				"width": "8",
+				"height": "8"
+			},
+			{
+				"name": "crate2.png",
+				"x": "8",
+				"y": "0",
+				"width": "8",
+				"height": "8"
+			},
+			{
+				"name": "crate3.png",
+				"x": "16",
+				"y": "0",
+				"width": "8",
+				"height": "8"
+			}
+			
+		],
+		"imagePath": "tileset.png"
+	}
+}

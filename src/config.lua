@@ -12,6 +12,7 @@ lx = love.math
 lw = love.window
 --
 Config = {}
+Config.debug = false
 
 --------------------
 -- World Constants
@@ -54,6 +55,11 @@ Config.ui = {
 Config.audio = {
 
 }
+
+--------------------
+-- Image Configurations
+--
+Config.sheet = Spritesheet('res/tilesets/tileset.json')
 
 --
 Formula = {

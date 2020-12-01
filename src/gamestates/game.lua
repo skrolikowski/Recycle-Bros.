@@ -108,7 +108,7 @@ function Game:keypressed(key)
 	elseif key == 'down'   then self.b2:move(0,  1)
 	elseif key == 'w'      then self.b1:move(0, -1)
 	elseif key == 's'      then self.b1:move(0,  1)
-	elseif key == 'g'      then self.world.debug = not self.world.debug
+	elseif key == 'g'      then Config.debug = not Config.debug
 	elseif key == 'escape' then love.event.quit()
 	end
 end

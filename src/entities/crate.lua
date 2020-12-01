@@ -35,6 +35,11 @@ function Crate:tick()
 	-- TODO: right/left = points
 end
 
+function Crate:draw()
+	lg.setColor(Config.color.white)
+	Config.sheet:draw('crate1', self:position())
+end
+
 -- Is supported from below?
 --
 function Crate:isSupported()

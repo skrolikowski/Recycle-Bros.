@@ -33,14 +33,18 @@ function Bot:move(dx, dy)
 	if futureY >= 3 and futureY <= 9 then
 		Base.move(self, dx, dy)
 	end
+end
 
-	-- -- check for crate
-	-- local crate = self:isBelowCrate()
+-- Update
+--
+function Bot:update(dt)
+	-- TODO: optimize
+	local crate = self:getCrate()
 
-	-- -- expedite
-	-- if crate and not crate.isDamaged then
-	-- 	crate:move(crate.axis:unpack())
-	-- end
+	-- expedite
+	if crate and not crate.isDamaged then
+		crate:move(crate.axis:unpack())
+	end
 end
 
 -- Draw
@@ -57,12 +61,12 @@ end
 
 -- Is bot below crate?
 --
-function Bot:isBelowCrate()
+function Bot:getCrate()
 	local cell  = self:cell():above()
 	local items = cell.items or {}
 
 	for __, item in pairs(items) do
-		if item == 'crate' then
+		if item.name == 'crate' then
 			return item
 		end
 	end
