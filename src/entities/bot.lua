@@ -30,7 +30,7 @@ end
 function Bot:move(dx, dy)
 	futureY = self.row + dy
 
-	if futureY >= 2 and futureY <= 8 then
+	if futureY >= 3 and futureY <= 9 then
 		Base.move(self, dx, dy)
 	end
 

@@ -43,7 +43,7 @@ function World:remove(item)
 	if self.items[item.id] then
 		local bounds = item:aabb()
 		local cells  = self.grid:queryCellsInBounds(bounds)
-		
+
 		-- remove item from cells
 		for __, cell in pairs(cells) do
 			cell:remove(item)
@@ -82,7 +82,7 @@ end
 --
 function World:queryCell(row, col)
 	local cell = self.grid:queryCell(row, col)
-	
+
 	if cell then
 		return cell.items
 	end

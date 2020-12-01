@@ -17,6 +17,7 @@ end
 --
 function Game:update(dt)
 	if not self.isPaused then
+		self.map:update(dt)
 		self.world:update(dt)
 	end
 end
@@ -24,7 +25,7 @@ end
 -- Draw
 --
 function Game:draw()
-	lg.setBackgroundColor(Config.color.black)
+	lg.setBackgroundColor(Util:RGBA(3, 14, 38, 255))
 
 	lg.push()
 		lg.scale(Config.world.scale, Config.world.scale)
@@ -32,6 +33,7 @@ function Game:draw()
 
 		-- draw map
 		self.map:drawTileLayer('Background')
+		self.map:drawTileLayer('Border')
 		self.map:drawTileLayer('Entities')
 
 		-- draw entities

@@ -1,7 +1,7 @@
 return {
-  version = "1.2",
+  version = "1.4",
   luaversion = "5.1",
-  tiledversion = "1.3.1",
+  tiledversion = "1.4.3",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 12,
@@ -24,6 +24,7 @@ return {
       image = "../tilesets/tileset.png",
       imagewidth = 96,
       imageheight = 96,
+      objectalignment = "unspecified",
       tileoffset = {
         x = 0,
         y = 0
@@ -36,51 +37,194 @@ return {
       properties = {},
       terrains = {},
       tilecount = 144,
-      tiles = {}
+      tiles = {
+        {
+          id = 24,
+          animation = {
+            {
+              tileid = 24,
+              duration = 100
+            },
+            {
+              tileid = 36,
+              duration = 100
+            },
+            {
+              tileid = 48,
+              duration = 100
+            },
+            {
+              tileid = 60,
+              duration = 100
+            }
+          }
+        },
+        {
+          id = 25,
+          animation = {
+            {
+              tileid = 25,
+              duration = 100
+            },
+            {
+              tileid = 37,
+              duration = 100
+            },
+            {
+              tileid = 49,
+              duration = 100
+            },
+            {
+              tileid = 61,
+              duration = 100
+            }
+          }
+        },
+        {
+          id = 26,
+          animation = {
+            {
+              tileid = 26,
+              duration = 100
+            },
+            {
+              tileid = 38,
+              duration = 100
+            },
+            {
+              tileid = 50,
+              duration = 100
+            },
+            {
+              tileid = 62,
+              duration = 100
+            }
+          }
+        },
+        {
+          id = 27,
+          animation = {
+            {
+              tileid = 27,
+              duration = 100
+            },
+            {
+              tileid = 39,
+              duration = 100
+            },
+            {
+              tileid = 51,
+              duration = 100
+            },
+            {
+              tileid = 63,
+              duration = 100
+            }
+          }
+        },
+        {
+          id = 28,
+          animation = {
+            {
+              tileid = 28,
+              duration = 100
+            },
+            {
+              tileid = 40,
+              duration = 100
+            },
+            {
+              tileid = 52,
+              duration = 100
+            },
+            {
+              tileid = 64,
+              duration = 100
+            }
+          }
+        },
+        {
+          id = 29,
+          animation = {
+            {
+              tileid = 29,
+              duration = 100
+            },
+            {
+              tileid = 41,
+              duration = 100
+            },
+            {
+              tileid = 53,
+              duration = 100
+            },
+            {
+              tileid = 65,
+              duration = 100
+            }
+          }
+        }
+      }
     }
   },
   layers = {
     {
       type = "tilelayer",
-      id = 1,
-      name = "Background",
       x = 0,
       y = 0,
       width = 12,
       height = 12,
+      id = 5,
+      name = "Background",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
       properties = {},
       encoding = "base64",
-      data = "CgAAAAsAAAALAAAACwAAAAsAAAALAAAACwAAAAsAAAALAAAACwAAAAsAAAAMAAAAFgAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAYAAAAFgAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAYAAAAFgAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAYAAAAFgAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAYAAAAFgAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAYAAAAFgAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAYAAAAFgAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAYAAAAFgAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAYAAAALgAAAC8AAAAvAAAALwAAAC8AAAAvAAAALwAAAC8AAAAvAAAALwAAAC8AAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      data = "FwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABAAAAAXAAAAFwAAABcAAAAQAAAAEAAAABcAAAAXAAAAFwAAABAAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAAA0AAAAXAAAAFwAAABcAAAANAAAADQAAABcAAAAXAAAAFwAAAA0AAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABAAAAAXAAAAFwAAABcAAAAQAAAAEAAAABcAAAAXAAAAFwAAABAAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAAA0AAAAXAAAAFwAAABcAAAANAAAADQAAABcAAAAXAAAAFwAAAA0AAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAFwAAABcAAAAXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
     {
       type = "tilelayer",
-      id = 3,
-      name = "Entities",
       x = 0,
       y = 0,
       width = 12,
       height = 12,
+      id = 1,
+      name = "Border",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
       properties = {},
       encoding = "base64",
-      data = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAA4AAAAPAAAAAAAAAA0AAAAOAAAADgAAAA8AAAAAAAAADQAAAA4AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAA4AAAAPAAAAAAAAAA0AAAAOAAAADgAAAA8AAAAAAAAADQAAAA4AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAA4AAAAPAAAAAAAAAA0AAAAOAAAADgAAAA8AAAAAAAAADQAAAA4AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAA4AAAAPAAAAAAAAAA0AAAAOAAAADgAAAA8AAAAAAAAADQAAAA4AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+      data = "CgAAAAsAAAALAAAACwAAAAsAAAALAAAACwAAAAsAAAALAAAACwAAAAsAAAAMAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAALgAAAC8AAAAvAAAALwAAAC8AAAAvAAAALwAAAC8AAAAvAAAALwAAAC8AAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 12,
+      height = 12,
+      id = 3,
+      name = "Entities",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      properties = {},
+      encoding = "base64",
+      data = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHQAAAB0AAAAeAAAAAAAAABwAAAAdAAAAHQAAAB4AAAAAAAAAHAAAAB0AAAAdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGgAAABoAAAAbAAAAAAAAABkAAAAaAAAAGgAAABsAAAAAAAAAGQAAABoAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHQAAAB0AAAAeAAAAAAAAABwAAAAdAAAAHQAAAB4AAAAAAAAAHAAAAB0AAAAdAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGgAAABoAAAAbAAAAAAAAABkAAAAaAAAAGgAAABsAAAAAAAAAGQAAABoAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     },
     {
       type = "objectgroup",
+      draworder = "topdown",
       id = 4,
       name = "Spawn",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      draworder = "topdown",
       properties = {},
       objects = {
         {
@@ -102,13 +246,13 @@ return {
     },
     {
       type = "objectgroup",
+      draworder = "topdown",
       id = 5,
       name = "Belt",
       visible = true,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      draworder = "topdown",
       properties = {},
       objects = {
         {
