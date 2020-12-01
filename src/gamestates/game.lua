@@ -41,11 +41,11 @@ function Game:draw()
 	lg.pop()
 
 	-- ui
-	lg.setFont(Config.ui.font.xl)
+	lg.setFont(Config.ui.font.md)
 
-	lg.print("Wave: " .. self.wave, 10, 385)
-	lg.print("Points: " .. self.points, 10, 415)
-	lg.print("Miss: " .. self.misses, 355, 415)
+	lg.print("Wave: " .. self.wave, 10, 405)
+	lg.print("Points: " .. self.points, 10, 435)
+	lg.print("Miss: " .. self.misses, 390, 435)
 end
 
 -- Enter scene
