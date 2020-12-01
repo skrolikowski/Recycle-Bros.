@@ -9,33 +9,49 @@ local World  = Modern:extend()
 function World:new(game)
 	self.game   = game
 	self.map    = sti('res/maps/test.lua')
-	self.width  = self.map.width  * self.map.tilewidth  * Config.world.scale
-	self.height = self.map.height * self.map.tileheight * Config.world.scale
-	self.grid   = Grid(self, self.map.tilewidth * Config.world.scale)
+	self.width  = self.map.width  * self.map.tilewidth
+	self.height = self.map.height * self.map.tileheight
+	self.grid   = Grid(self, self.map.tilewidth)
 	self.items  = {}
+
+	-- flags
 	self.debug  = false
 end
 
--- Add entities to world
+-- Add to world
 --
-function World:add(...)
-	for __, item in pairs({...}) do
-		--
-		-- register in world
-		self.items[item.id] = item
+function World:add(item)
+	--
+	-- register
+	self.items[item.id] = item
 
-		-- register in world
-		self.grid:add(item, item:cell())
+	--
+	-- add item to cells
+	local bounds = item:aabb()
+	local cells  = self.grid:queryCellsInBounds(bounds)
+
+	for __, cell in pairs(cells) do
+		cell:add(item)
 	end
+
+	return item
 end
 
- -- Remove entities from world
+-- Remove from world
+--
 function World:remove(item)
-	--
-	-- unregister from world
-	self.items[item.id] = nil
+	if self.items[item.id] then
+		local bounds = item:aabb()
+		local cells  = self.grid:queryCellsInBounds(bounds)
+		
+		-- remove item from cells
+		for __, cell in pairs(cells) do
+			cell:remove(item)
+		end
 
-	self.grid:remove(item, item:cell())
+		-- unregister
+		self.items[item.id] = nil
+	end
 end
 
 -- Tear down
@@ -74,31 +90,19 @@ function World:queryCell(row, col)
 	return {}
 end
 
--- Keypressed
---
-function World:keypressed(key)
-	if key == 'g' then
-		self.debug = not self.debug
-	end
-end
-
 -- Draw
 --
 function World:draw()
 	--
-	-- Draw the map
-	love.graphics.setColor(Config.color.white)
-	self.map:draw(0, 0, Config.world.scale, Config.world.scale)
-
 	-- Draw all items
 	for __, item in pairs(self.items) do
 		item:draw()
 	end
 
 	-- Draw the grid
-	-- if self.debug then
+	if self.debug then
 		self.grid:draw()
-	-- end
+	end
 end
 
 return World

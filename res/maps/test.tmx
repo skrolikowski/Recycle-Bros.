@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="8" tileheight="8" infinite="0" nextlayerid="5" nextobjectid="1">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="12" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="23">
  <editorsettings>
   <export target="test.lua" format="lua"/>
  </editorsettings>
@@ -14,5 +14,16 @@
    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAA4AAAAPAAAAAAAAAA0AAAAOAAAADgAAAA8AAAAAAAAADQAAAA4AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAA4AAAAPAAAAAAAAAA0AAAAOAAAADgAAAA8AAAAAAAAADQAAAA4AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAA4AAAAPAAAAAAAAAA0AAAAOAAAADgAAAA8AAAAAAAAADQAAAA4AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAA4AAAAPAAAAAAAAAA0AAAAOAAAADgAAAA8AAAAAAAAADQAAAA4AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   </data>
  </layer>
- <objectgroup id="4" name="Spawns"/>
+ <objectgroup color="#eb00dc" id="4" name="Spawn">
+  <object id="2" x="0" y="8" width="8" height="8">
+   <properties>
+    <property name="dx" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="Belt">
+  <object id="7" x="0" y="16" width="24" height="8"/>
+  <object id="20" x="32" y="16" width="32" height="8"/>
+  <object id="21" x="72" y="16" width="24" height="8"/>
+ </objectgroup>
 </map>

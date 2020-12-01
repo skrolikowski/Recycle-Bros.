@@ -41,7 +41,7 @@ end
 -- Get dimensions
 --
 function Gamestate:dimensions()
-	return Config.width, Config.height
+	return Config.world.width, Config.world.height
 end
 
 return Gamestate

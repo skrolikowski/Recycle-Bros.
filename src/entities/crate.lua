@@ -28,7 +28,7 @@ function Crate:tick()
 	end
 
 	-- move
-	self:move(self, self.axis:unpack())
+	self:move(self.axis:unpack())
 
 	-- off screen check
 	-- TODO: below = miss
@@ -42,7 +42,7 @@ function Crate:isSupported()
 	local items = cell.items
 
 	for __, item in pairs(items) do
-		if entity == 'belt' or entity == 'bot' then
+		if item.name == 'belt' or item.name == 'bot' then
 			return true
 		end
 	end
