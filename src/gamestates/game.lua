@@ -33,6 +33,7 @@ function Game:draw()
 
 		-- draw map
 		self.map:drawTileLayer('Background')
+		self.map:drawTileLayer('Border')
 		self.map:drawTileLayer('Entities')
 
 		-- draw entities
