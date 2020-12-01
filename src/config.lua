@@ -40,11 +40,11 @@ Config.color = {
 --
 Config.ui = {
 	font = {
-		xs = lg.newFont('res/ui/Pocket.ttf', 12),
-		sm = lg.newFont('res/ui/Pocket.ttf', 18),
-		md = lg.newFont('res/ui/Pocket.ttf', 24),
-		lg = lg.newFont('res/ui/Pocket.ttf', 32),
-		xl = lg.newFont('res/ui/Pocket.ttf', 64)
+		xs = lg.newFont('res/ui/Kenney Mini.ttf', 12),
+		sm = lg.newFont('res/ui/Kenney Mini.ttf', 18),
+		md = lg.newFont('res/ui/Kenney Mini.ttf', 24),
+		lg = lg.newFont('res/ui/Kenney Mini.ttf', 32),
+		xl = lg.newFont('res/ui/Kenney Mini.ttf', 64)
 	}
 }
 
