@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="12" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="36">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="12" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="39">
  <editorsettings>
   <export target="test.lua" format="lua"/>
  </editorsettings>
@@ -23,6 +23,21 @@
   <object id="25" x="88" y="56" width="8" height="8">
    <properties>
     <property name="dx" type="int" value="-1"/>
+   </properties>
+  </object>
+  <object id="36" x="88" y="24" width="8" height="8">
+   <properties>
+    <property name="dx" type="int" value="-1"/>
+   </properties>
+  </object>
+  <object id="37" x="0" y="8" width="8" height="8">
+   <properties>
+    <property name="dx" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="38" x="0" y="40" width="8" height="8">
+   <properties>
+    <property name="dx" type="int" value="1"/>
    </properties>
   </object>
  </objectgroup>

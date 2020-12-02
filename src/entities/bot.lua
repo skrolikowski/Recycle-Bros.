@@ -8,7 +8,7 @@ local Bot  = Base:extend()
 --
 function Bot:new(data)
 	Base.new(self, _:merge({
-		name = 'bot'
+		name = data.name or 'bot'
 	}, data))
 
 	self.image = lg.newImage("res/sprites/bot_" .. self.color .. ".png")
