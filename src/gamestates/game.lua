@@ -70,12 +70,16 @@ function Game:enter(from, ...)
 	self.b1 = Entities['bot']()({ game = self, row = 5, col = 4, color="yellow" })
 	self.b2 = Entities['bot']()({ game = self, row = 5, col = 9, color="red" })
 
+	-- music
+	Config.bgm.game:play()
+
 	-- spawn entities
 	Spawner(self, self.map.layers):load('Belt','Spawn')
 
 	-- tick - based on wave
 	Timer.every(Formula.tick(self.wave), function()
 		self.world:tick()
+		Config.audio.tick:play()
 	end)
 end
 
