@@ -98,7 +98,7 @@ end
 -- Draw
 --
 function Entity:draw()
-	if self.game.world.debug then
+	if Config.debug then
 		lg.setColor(Config.color.debug)
 		lg.rectangle('line', self:container())
 	end

@@ -25,22 +25,24 @@ function Bot:update(dt)
 	if self.animation.currentTime >= self.animation.duration then
 		self.animation.currentTime = self.animation.currentTime - self.animation.duration
 	end
+
+	-- TODO: optimize
+	local crate = self:getCrate()
+
+	-- expedite
+	if crate and not crate.isDamaged then
+		crate:move(crate.axis:unpack())
+	end
 end
 
 function Bot:move(dx, dy)
 	futureY = self.row + dy
 
-	if futureY >= 3 and futureY <= 9 then
+	if futureY >= Config.game.botBounds.min and
+	   futureY <= Config.game.botBounds.max
+	then
 		Base.move(self, dx, dy)
 	end
-
-	-- -- check for crate
-	-- local crate = self:isBelowCrate()
-
-	-- -- expedite
-	-- if crate and not crate.isDamaged then
-	-- 	crate:move(crate.axis:unpack())
-	-- end
 end
 
 -- Draw
@@ -57,12 +59,12 @@ end
 
 -- Is bot below crate?
 --
-function Bot:isBelowCrate()
+function Bot:getCrate()
 	local cell  = self:cell():above()
 	local items = cell.items or {}
 
 	for __, item in pairs(items) do
-		if item == 'crate' then
+		if item.name == 'crate' then
 			return item
 		end
 	end

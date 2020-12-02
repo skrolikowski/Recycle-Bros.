@@ -13,9 +13,6 @@ function World:new(game)
 	self.height = self.map.height * self.map.tileheight
 	self.grid   = Grid(self, self.map.tilewidth)
 	self.items  = {}
-
-	-- flags
-	self.debug  = false
 end
 
 -- Add to world
@@ -100,7 +97,7 @@ function World:draw()
 	end
 
 	-- Draw the grid
-	if self.debug then
+	if Config.debug then
 		self.grid:draw()
 	end
 end

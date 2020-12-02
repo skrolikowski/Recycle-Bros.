@@ -9,6 +9,9 @@ function Game:init(data)
 	Base.init(self, { name = 'game' })
 
 	--
+	-- properties
+	self.timer = Timer.new()
+
 	-- flags
 	self.isPaused = false
 end
@@ -17,6 +20,7 @@ end
 --
 function Game:update(dt)
 	if not self.isPaused then
+		self.timer:update(dt)
 		self.map:update(dt)
 		self.world:update(dt)
 	end
@@ -60,10 +64,11 @@ function Game:enter(from, ...)
 	self.height = self.map.height * self.map.tileheight
 
 	-- world properties
-	self.world  = World(self)
-	self.wave   = self.settings.wave or 1
-	self.points = 0
-	self.misses = 0
+	self.world     = World(self)
+	self.wave      = self.settings.wave or 1
+	self.points    = 0
+	self.maxPoints = Formula.points(self.wave)
+	self.misses    = 0
 
 	--
 	-- bots, controlled by player
@@ -77,7 +82,7 @@ function Game:enter(from, ...)
 	Spawner(self, self.map.layers):load('Belt','Spawn')
 
 	-- tick - based on wave
-	Timer.every(Formula.tick(self.wave), function()
+	self.timer:every(Formula.tick(self.wave), function()
 		self.world:tick()
 		Config.audio.tick:play()
 	end)
@@ -100,19 +105,42 @@ end
 -- Leave scene
 --
 function Game:leave()
+	self.timer:clear()
 	self.world:destroy()
 end
 
 ---- ---- ---- ----
 
+-- Record Miss
 --
+function Game:addMiss()
+	self.misses = self.misses + 1
+
+	if self.misses >= Config.game.maxMisses then
+		--TODO: self:gameOver()
+	end
+end
+
+-- Record Point
+--
+function Game:addPoint()
+	self.points = self.points + 1
+
+	if self.points >= self.maxPoints then
+		--TODO: self:nextWave()
+	end
+end
+
+---- ---- ---- ----
+
+-- Controls
 --
 function Game:keypressed(key)
 	if     key == 'up'     then self.b2:move(0, -1)
 	elseif key == 'down'   then self.b2:move(0,  1)
 	elseif key == 'w'      then self.b1:move(0, -1)
 	elseif key == 's'      then self.b1:move(0,  1)
-	elseif key == 'g'      then self.world.debug = not self.world.debug
+	elseif key == 'g'      then Config.debug = not Config.debug
 	elseif key == 'escape' then love.event.quit()
 	end
 end

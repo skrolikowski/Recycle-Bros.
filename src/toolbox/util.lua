@@ -71,29 +71,6 @@ end
 
 --
 --
-function Util:eightdir(x, y)
-    assert(x ~= nil, 'x parameter required')
-    assert(y ~= nil, 'y parameter required')
-    --
-    if not __angles then
-        __angles = {
-            ['0,0']   = 0,           -- neutral
-            ['1,0']   = 0,           -- e
-            ['1,1']   = 1*_.__pi/4,  -- n/e
-            ['0,1']   = 1*_.__pi/2,  -- n
-            ['-1,1']  = 3*_.__pi/4,  -- n/w
-            ['-1,0']  =   _.__pi,    -- w
-            ['-1,-1'] = 5*_.__pi/4,  -- s/w
-            ['0,-1']  = 3*_.__pi/2,  -- s
-            ['1,-1']  = 7*_.__pi/4,  -- s/e
-        }
-    end
-
-    return __angles[x..','..y]
-end
-
---
---
 function Util:newAnimation(image, width, height, duration)
     local animation = {}
 
