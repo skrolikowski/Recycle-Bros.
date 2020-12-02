@@ -28,10 +28,10 @@ function Bot:update(dt)
 end
 
 function Bot:move(dx, dy)
-	futureY = self.row + dy
+	futureRow = self.row + dy
 
-	if futureY >= Config.game.botBounds.min and
-	   futureY <= Config.game.botBounds.max
+	if futureRow >= self.minRow and
+	   futureRow <= self.maxRow
 	then
 		Base.move(self, dx, dy)
 	end

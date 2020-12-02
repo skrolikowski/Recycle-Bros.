@@ -67,7 +67,7 @@ function Game:enter(from, ...)
 
 	-- world properties
 	self.world = World(self)
-	
+
 	-- spawn entities
 	Spawner(self, self.map.layers):load('Belt','Spawn')
 
@@ -75,8 +75,8 @@ function Game:enter(from, ...)
 	self.spawns = self.world:queryByName('spawn')
 
 	-- spawn bots, controlled by player
-	self.b1 = Entities['bot']()({ game = self, row = 5, col = 4, color = 'yellow' })
-	self.b2 = Entities['bot']()({ game = self, row = 5, col = 9, color = 'red' })
+	self.b1 = Entities['bot']()({ game = self, row = 5, col = 4, color = 'yellow', minRow = 5, maxRow = 9 })
+	self.b2 = Entities['bot']()({ game = self, row = 5, col = 9, color = 'red', minRow = 3, maxRow = 7 })
 
 	-- music
 	Config.bgm.game:play()
