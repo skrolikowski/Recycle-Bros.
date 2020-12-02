@@ -12,6 +12,7 @@ function Game:init(data)
 	-- properties
 	self.timer  = Timer.new()
 	self.ticker = nil
+	self.ticks  = 0
 
 	-- flags
 	self.isPaused = false
@@ -65,18 +66,20 @@ function Game:enter(from, ...)
 	self.height = self.map.height * self.map.tileheight
 
 	-- world properties
-	self.world     = World(self)
+	self.world = World(self)
+	
+	-- spawn entities
+	Spawner(self, self.map.layers):load('Belt','Spawn')
 
-	--
-	-- bots, controlled by player
-	self.b1 = Entities['bot']()({ game = self, row = 5, col = 4, color="yellow" })
-	self.b2 = Entities['bot']()({ game = self, row = 5, col = 9, color="red" })
+	-- spawners
+	self.spawns = self.world:queryByName('spawn')
+
+	-- spawn bots, controlled by player
+	self.b1 = Entities['bot']()({ game = self, row = 5, col = 4, color = 'yellow' })
+	self.b2 = Entities['bot']()({ game = self, row = 5, col = 9, color = 'red' })
 
 	-- music
 	Config.bgm.game:play()
-
-	-- spawn entities
-	Spawner(self, self.map.layers):load('Belt','Spawn')
 
 	-- play!
 	self:restart()
@@ -148,10 +151,27 @@ function Game:nextWave()
 	local delay = Formula.tick(self.wave)
 
 	self.ticker = self.timer:every(delay, function()
-		self.world:tick()
-
-		Config.audio.tick:play()
+		self:tick()
 	end)
+end
+
+-- Game tick
+--
+function Game:tick()
+	Config.audio.tick:play()
+
+	-- notify world
+	self.world:tick()
+
+	self.ticks = self.ticks + 1
+
+	-- spawn new item
+	if self.ticks % 2 == 0 then
+		local pick    = _.__random(#self.spawns)
+		local spawner = self.spawns[pick]
+
+		spawner:spawn()
+	end
 end
 
 -- Restart game
@@ -160,6 +180,7 @@ function Game:restart()
 	self.wave   = 0
 	self.points = 0
 	self.misses = 0
+	self.ticks  = 0
 
 	--
 	self:nextWave()

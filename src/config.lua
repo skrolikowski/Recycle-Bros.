@@ -88,6 +88,6 @@ end
 
 --
 Formula = {
-	tick   = function(x) return 0.85 ^ x / x + 0.5 end,
+	tick   = function(x) return 0.95^x + 0.75 end,
 	points = function(x) return _.__floor(10 * (x ^ 1.15)) end,
 }

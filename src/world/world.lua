@@ -75,6 +75,20 @@ function World:update(dt)
 	end
 end
 
+-- Query items by name
+--
+function World:queryByName(name)
+	local items = {}
+
+	for __, item in pairs(self.items) do
+		if item.name == name then
+			table.insert(items, item)
+		end
+	end
+
+	return items
+end
+
 -- Query items in cell
 --
 function World:queryCell(row, col)
