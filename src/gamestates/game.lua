@@ -77,6 +77,7 @@ function Game:enter(from, ...)
 	-- music
 	self.bgm = la.newSource('res/music/bip-bop.ogg', 'stream')
 	self.bgm:setVolume(0.5)
+	self.bgm:setLooping(true)
 	self.bgm:play()
 
 	-- spawn entities
