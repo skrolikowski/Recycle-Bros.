@@ -8,7 +8,7 @@ local Crate = Base:extend()
 --
 function Crate:new(data)
 	Base.new(self, _:merge({ name = 'crate' }, data))
-	
+
 	--
 	-- properties
 	self.axis = data.axis or Vec2()
@@ -23,6 +23,10 @@ function Crate:tick()
 	--
 	-- damaged goods check
 	if not self:isSupported() then
+		if self.isDamaged == false then
+			Config.audio.drop:play()
+		end
+
 		self.isDamaged = true
 		self.axis      = Vec2(0, 1)
 	end
@@ -75,6 +79,10 @@ function Crate:isSupported()
 
 	for __, item in pairs(items) do
 		if item.name == 'belt' or item.name == 'bot' then
+			if item.name == 'bot' and not self.isDamaged then
+				Config.audio.pickup:play()
+			end
+
 			return true
 		end
 	end
