@@ -10,7 +10,8 @@ function Game:init(data)
 
 	--
 	-- properties
-	self.timer = Timer.new()
+	self.timer  = Timer.new()
+	self.ticker = nil
 
 	-- flags
 	self.isPaused = false
@@ -65,10 +66,6 @@ function Game:enter(from, ...)
 
 	-- world properties
 	self.world     = World(self)
-	self.wave      = self.settings.wave or 1
-	self.points    = 0
-	self.maxPoints = Formula.points(self.wave)
-	self.misses    = 0
 
 	--
 	-- bots, controlled by player
@@ -81,11 +78,8 @@ function Game:enter(from, ...)
 	-- spawn entities
 	Spawner(self, self.map.layers):load('Belt','Spawn')
 
-	-- tick - based on wave
-	self.timer:every(Formula.tick(self.wave), function()
-		self.world:tick()
-		Config.audio.tick:play()
-	end)
+	-- play!
+	self:restart()
 end
 
 -- Pause game
@@ -121,7 +115,7 @@ function Game:addMiss()
 	self.misses = self.misses + 1
 
 	if self.misses >= Config.game.maxMisses then
-		--TODO: self:gameOver()
+		self:gameOver()
 	end
 end
 
@@ -131,8 +125,56 @@ function Game:addPoint()
 	self.points = self.points + 1
 
 	if self.points >= self.maxPoints then
-		--TODO: self:nextWave()
+		self:nextWave()
 	end
+end
+
+-- Next wave! - goal achieved
+--
+function Game:nextWave()
+	self.wave      = self.wave + 1
+	self.maxPoints = Formula.points(self.wave)
+	self.points    = self.points or 0
+	self.misses    = self.misses or 0
+
+	--
+	-- cancel prev timer (if applicable)
+	if self.ticker then
+		self.timer:cancel(self.ticker)
+	end
+
+	--
+	-- set ticker
+	local delay = Formula.tick(self.wave)
+
+	self.ticker = self.timer:every(delay, function()
+		self.world:tick()
+
+		Config.audio.tick:play()
+	end)
+end
+
+-- Restart game
+--
+function Game:restart()
+	self.wave   = 0
+	self.points = 0
+	self.misses = 0
+
+	--
+	self:nextWave()
+end
+
+-- Game over - too many misses
+--
+function Game:gameOver()
+	Gamestate.push(Gamestates['gameover'])
+end
+
+-- Exit
+--
+function Game:exitGame()
+	love.event.quit()
 end
 
 ---- ---- ---- ----
@@ -146,7 +188,7 @@ function Game:keypressed(key)
 	elseif key == 's'      then self.b1:move(0,  1)
 	elseif key == 'g'      then Config.debug = not Config.debug
 	elseif key == 'p'      then self:pause()
-	elseif key == 'escape' then love.event.quit()
+	elseif key == 'escape' then self:exitGame()
 	end
 end
 
