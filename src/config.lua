@@ -43,7 +43,7 @@ Config.color = {
 	blue    = { _:color('blue-500') },
 	white   = { _:color('white') },
 	black   = { _:color('black') },
-	overlay = { 0, 0, 0, 0.75 },
+	overlay = { 0, 0, 0, 0.65 },
 }
 
 --------------------

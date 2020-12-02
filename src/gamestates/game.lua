@@ -92,7 +92,9 @@ end
 --
 function Game:pause()
 	self.isPaused = true
-	--
+
+	Config.bgm.game:pause()
+
 	Gamestate.push(Gamestates['pause'])
 end
 
@@ -100,6 +102,8 @@ end
 --
 function Game:resume()
 	self.isPaused = false
+
+	Config.bgm.game:play()
 end
 
 -- Leave scene
@@ -141,6 +145,7 @@ function Game:keypressed(key)
 	elseif key == 'w'      then self.b1:move(0, -1)
 	elseif key == 's'      then self.b1:move(0,  1)
 	elseif key == 'g'      then Config.debug = not Config.debug
+	elseif key == 'p'      then self:pause()
 	elseif key == 'escape' then love.event.quit()
 	end
 end
