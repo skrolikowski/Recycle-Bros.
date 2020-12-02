@@ -15,13 +15,6 @@ function Crate:new(data)
 
 	-- flags
 	self.isDamaged = false
-
-	-- sounds
-	self.droppedSound = la.newSource('res/sounds/drop.ogg', 'static')
-	self.droppedSound:setVolume(0.5)
-
-	self.pickedUpSound = la.newSource('res/sounds/pickup.ogg', 'static')
-	self.pickedUpSound:setVolume(0.5)
 end
 
 -- Update
@@ -31,7 +24,7 @@ function Crate:tick()
 	-- damaged goods check
 	if not self:isSupported() then
 		if self.isDamaged == false then
-			self.droppedSound:play()
+			Config.audio.drop:play()
 		end
 
 		self.isDamaged = true
@@ -54,8 +47,8 @@ function Crate:isSupported()
 
 	for __, item in pairs(items) do
 		if item.name == 'belt' or item.name == 'bot' then
-			if item.name == 'bot' then
-				self.pickedUpSound:play()
+			if item.name == 'bot' and not self.isDamaged then
+				Config.audio.pickup:play()
 			end
 
 			return true
