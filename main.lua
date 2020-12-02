@@ -23,9 +23,3 @@ function love.load()
     Gamestate.registerEvents()
     Gamestate.switch(Gamestates['game'], { level = 1 })
 end
-
--- Update
---
-function love.update(dt)
-    Timer.update(dt)
-end

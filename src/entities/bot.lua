@@ -25,25 +25,23 @@ function Bot:update(dt)
 	if self.animation.currentTime >= self.animation.duration then
 		self.animation.currentTime = self.animation.currentTime - self.animation.duration
 	end
-end
 
-function Bot:move(dx, dy)
-	futureY = self.row + dy
-
-	if futureY >= 3 and futureY <= 9 then
-		Base.move(self, dx, dy)
-	end
-end
-
--- Update
---
-function Bot:update(dt)
 	-- TODO: optimize
 	local crate = self:getCrate()
 
 	-- expedite
 	if crate and not crate.isDamaged then
 		crate:move(crate.axis:unpack())
+	end
+end
+
+function Bot:move(dx, dy)
+	futureY = self.row + dy
+
+	if futureY >= Config.game.botBounds.min and
+	   futureY <= Config.game.botBounds.max
+	then
+		Base.move(self, dx, dy)
 	end
 end
 

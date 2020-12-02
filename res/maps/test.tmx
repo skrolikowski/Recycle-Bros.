@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="12" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="23">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="12" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="36">
  <editorsettings>
   <export target="test.lua" format="lua"/>
  </editorsettings>
@@ -20,15 +20,24 @@
   </data>
  </layer>
  <objectgroup color="#eb00dc" id="4" name="Spawn">
-  <object id="2" x="0" y="8" width="8" height="8">
+  <object id="25" x="88" y="56" width="8" height="8">
    <properties>
-    <property name="dx" type="int" value="1"/>
+    <property name="dx" type="int" value="-1"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup id="5" name="Belt">
-  <object id="7" x="0" y="16" width="24" height="8"/>
   <object id="20" x="32" y="16" width="32" height="8"/>
   <object id="21" x="72" y="16" width="24" height="8"/>
+  <object id="26" x="32" y="32" width="32" height="8"/>
+  <object id="27" x="32" y="48" width="32" height="8"/>
+  <object id="28" x="32" y="64" width="32" height="8"/>
+  <object id="29" x="0" y="32" width="24" height="8"/>
+  <object id="30" x="0" y="48" width="24" height="8"/>
+  <object id="31" x="0" y="64" width="24" height="8"/>
+  <object id="32" x="72" y="32" width="24" height="8"/>
+  <object id="33" x="72" y="48" width="24" height="8"/>
+  <object id="34" x="72" y="64" width="24" height="8"/>
+  <object id="35" x="0" y="16" width="24" height="8"/>
  </objectgroup>
 </map>

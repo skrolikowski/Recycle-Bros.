@@ -17,7 +17,7 @@ function Crate:new(data)
 	self.isDamaged = false
 end
 
--- Update
+-- Game tick
 --
 function Crate:tick()
 	--
@@ -27,17 +27,44 @@ function Crate:tick()
 		self.axis      = Vec2(0, 1)
 	end
 
+	--
 	-- move
 	self:move(self.axis:unpack())
 
-	-- off screen check
-	-- TODO: below = miss
-	-- TODO: right/left = points
+	--
+	-- point check
+	if not self:isInOfBoundsX() then
+		self.game:addPoint()
+		self:destroy()
+	--
+	-- miss check
+	elseif not self:isInOfBoundsY() then
+		self.game:addMiss()
+		self:destroy()
+	end
 end
 
+-- Draw
+--
 function Crate:draw()
-	lg.setColor(Config.color.white)
-	Config.sheet:draw('crate1', self:position())
+	local cx, cy = self:cell():center()
+
+	lg.setColor(Config.color.black)
+	lg.circle('fill', cx, cy, 2)
+end
+
+---- ---- ---- ----
+
+--
+function Crate:isInOfBoundsX()
+	return self.col >= Config.game.boundsX.min and
+	       self.col <= Config.game.boundsX.max
+end
+
+--
+function Crate:isInOfBoundsY()
+	return self.row >= Config.game.boundsY.min and
+	       self.row <= Config.game.boundsY.max
 end
 
 -- Is supported from below?

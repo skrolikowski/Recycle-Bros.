@@ -24,6 +24,16 @@ Config.world.width    = 96 * Config.world.scale
 Config.world.height   = 96 * Config.world.scale
 
 --------------------
+-- Game Configurations
+--
+Config.game = {
+	botBounds = { min = 3, max = 9  },
+	boundsX   = { min = 1, max = 12 },
+	boundsY   = { min = 1, max = 10 },
+	maxMisses = 3,
+}
+
+--------------------
 -- Common Colors
 --
 Config.color = {
@@ -56,12 +66,8 @@ Config.audio = {
 
 }
 
---------------------
--- Image Configurations
---
-Config.sheet = Spritesheet('res/tilesets/tileset.json')
-
 --
 Formula = {
-	tick = function(x) return 0.85 ^ x / x + 0.5 end
+	tick   = function(x) return 0.85 ^ x / x + 0.5 end,
+	points = function(x) return _.__floor(10 * (x ^ 1.5)) end,
 }

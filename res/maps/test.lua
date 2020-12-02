@@ -9,7 +9,7 @@ return {
   tilewidth = 8,
   tileheight = 8,
   nextlayerid = 6,
-  nextobjectid = 23,
+  nextobjectid = 36,
   properties = {},
   tilesets = {
     {
@@ -228,18 +228,18 @@ return {
       properties = {},
       objects = {
         {
-          id = 2,
+          id = 25,
           name = "",
           type = "",
           shape = "rectangle",
-          x = 0,
-          y = 8,
+          x = 88,
+          y = 56,
           width = 8,
           height = 8,
           rotation = 0,
           visible = true,
           properties = {
-            ["dx"] = 1
+            ["dx"] = -1
           }
         }
       }
@@ -255,19 +255,6 @@ return {
       offsety = 0,
       properties = {},
       objects = {
-        {
-          id = 7,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 0,
-          y = 16,
-          width = 24,
-          height = 8,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
         {
           id = 20,
           name = "",
@@ -287,6 +274,136 @@ return {
           type = "",
           shape = "rectangle",
           x = 72,
+          y = 16,
+          width = 24,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 26,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 32,
+          y = 32,
+          width = 32,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 27,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 32,
+          y = 48,
+          width = 32,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 28,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 32,
+          y = 64,
+          width = 32,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 29,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 32,
+          width = 24,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 30,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 48,
+          width = 24,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 31,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 64,
+          width = 24,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 32,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 72,
+          y = 32,
+          width = 24,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 33,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 72,
+          y = 48,
+          width = 24,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 34,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 72,
+          y = 64,
+          width = 24,
+          height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 35,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
           y = 16,
           width = 24,
           height = 8,
