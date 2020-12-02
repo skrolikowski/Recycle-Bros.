@@ -25,14 +25,6 @@ function Bot:update(dt)
 	if self.animation.currentTime >= self.animation.duration then
 		self.animation.currentTime = self.animation.currentTime - self.animation.duration
 	end
-
-	-- TODO: optimize
-	local crate = self:getCrate()
-
-	-- expedite
-	if crate and not crate.isDamaged then
-		crate:move(crate.axis:unpack())
-	end
 end
 
 function Bot:move(dx, dy)
@@ -55,21 +47,6 @@ function Bot:draw()
 
 	lg.setColor(Config.color.white)
 	lg.draw(self.animation.spriteSheet, self.animation.quads[spriteNum], x, y)
-end
-
--- Is bot below crate?
---
-function Bot:getCrate()
-	local cell  = self:cell():above()
-	local items = cell.items or {}
-
-	for __, item in pairs(items) do
-		if item.name == 'crate' then
-			return item
-		end
-	end
-
-	return false
 end
 
 return Bot

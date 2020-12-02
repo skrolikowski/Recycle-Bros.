@@ -89,5 +89,5 @@ end
 --
 Formula = {
 	tick   = function(x) return 0.85 ^ x / x + 0.5 end,
-	points = function(x) return _.__floor(10 * (x ^ 1.5)) end,
+	points = function(x) return _.__floor(10 * (x ^ 1.15)) end,
 }
