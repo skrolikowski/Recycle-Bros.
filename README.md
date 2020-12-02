@@ -16,5 +16,5 @@ The game must have a maximum resolution of 96 pixels by 96 pixels. Imagine you'r
 - [Love2D](https://love2d.org/) - a framework for making 2D games.
 - [WLK44 v2](https://lospec.com/palette-list/wlk44-v2) - color pallete
 - [Kenney Mini](https://www.kenney.nl/assets/kenney-fonts) - font
-- [Kenny Digital Audio](https://www.kenney.nl/assets/digital-audio) - sound effects
+- [Kenney Digital Audio](https://www.kenney.nl/assets/digital-audio) - sound effects
 - [Bip Bop](https://joshua-mclean.itch.io) - background music
