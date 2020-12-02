@@ -10,6 +10,22 @@ function Crate:new(data)
 	Base.new(self, _:merge({ name = 'crate' }, data))
 
 	--
+	-- sprite
+	items = {
+		'crate',
+		'dead_bot',
+		'full_battery',
+		'gold',
+		'iron',
+		'sapling',
+		'used_battery',
+		'water'
+	}
+
+	self.image = lg.newImage("res/sprites/item_" .. items[math.random(#items)] .. ".png")
+	self.image:setFilter("nearest", "nearest")
+
+	--
 	-- properties
 	self.axis = data.axis or Vec2()
 
@@ -51,10 +67,11 @@ end
 -- Draw
 --
 function Crate:draw()
-	local cx, cy = self:cell():center()
+	-- local cx, cy = self:cell():center()
+	local x, y = self:position()
 
-	lg.setColor(Config.color.black)
-	lg.circle('fill', cx, cy, 2)
+	lg.setColor(Config.color.white)
+	lg.draw(self.image, x, y)
 end
 
 ---- ---- ---- ----
