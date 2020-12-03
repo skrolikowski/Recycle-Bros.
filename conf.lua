@@ -3,11 +3,11 @@
 function love.conf(t)
     io.stdout:setvbuf('no')
 
-    t.identity = 'major-jam-3'
+    t.identity = 'recycle-bros'
     t.version  = '11.2'
     t.console  = false
 
-    t.window.title      = 'Major Jam 3: Retro'
+    t.window.title      = 'Recycle Bros.'
     t.window.x          = 200
     t.window.y          = 50
     t.window.fullscreen = false
