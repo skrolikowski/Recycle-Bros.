@@ -238,9 +238,7 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {
-            ["dx"] = -1
-          }
+          properties = {}
         },
         {
           id = 36,
@@ -253,9 +251,7 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {
-            ["dx"] = -1
-          }
+          properties = {}
         },
         {
           id = 37,
@@ -268,9 +264,7 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {
-            ["dx"] = 1
-          }
+          properties = {}
         },
         {
           id = 38,
@@ -283,9 +277,7 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {
-            ["dx"] = 1
-          }
+          properties = {}
         }
       }
     },
@@ -311,7 +303,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = 1
+          }
         },
         {
           id = 26,
@@ -324,7 +318,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = -1
+          }
         },
         {
           id = 27,
@@ -337,7 +333,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = 1
+          }
         },
         {
           id = 29,
@@ -350,7 +348,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = -1
+          }
         },
         {
           id = 30,
@@ -363,7 +363,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = 1
+          }
         },
         {
           id = 31,
@@ -376,7 +378,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = -1
+          }
         },
         {
           id = 32,
@@ -389,7 +393,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = -1
+          }
         },
         {
           id = 33,
@@ -402,7 +408,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = 1
+          }
         },
         {
           id = 34,
@@ -415,7 +423,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = -1
+          }
         },
         {
           id = 35,
@@ -428,7 +438,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = 1
+          }
         }
       }
     }

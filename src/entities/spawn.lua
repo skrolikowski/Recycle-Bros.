@@ -17,7 +17,6 @@ function Spawn:spawn()
 		game = self.game,
 		row  = self.row,
 		col  = self.col,
-		axis = Vec2(self.props.dx or 0, self.props.dy or 0),
 	})
 end
 
