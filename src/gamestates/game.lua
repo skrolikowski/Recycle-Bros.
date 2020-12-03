@@ -60,13 +60,13 @@ function Game:enter(from, ...)
 	Base.enter(self, from, ...)
 	--
 
-	-- map
-	self.map    = sti('res/maps/test.lua')
-	self.width  = self.map.width  * self.map.tilewidth
-	self.height = self.map.height * self.map.tileheight
-
 	-- world properties
 	self.world = World(self)
+
+	-- map
+	self.map    = sti('res/maps/game.lua')
+	self.width  = self.map.width  * self.map.tilewidth
+	self.height = self.map.height * self.map.tileheight
 
 	-- spawn entities
 	Spawner(self, self.map.layers):load('Belt','Spawn')

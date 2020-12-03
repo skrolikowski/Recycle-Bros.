@@ -23,7 +23,7 @@ function love.load()
 	loadGame()
 	--
     Gamestate.registerEvents()
-    Gamestate.switch(Gamestates['game'])
+    Gamestate.switch(Gamestates['title'])
 end
 
 ---- ---- ---- ----
