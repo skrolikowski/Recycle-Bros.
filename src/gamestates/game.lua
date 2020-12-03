@@ -61,7 +61,7 @@ function Game:enter(from, ...)
 	--
 
 	-- map
-	self.map    = sti('res/maps/test.lua')
+	self.map    = sti('res/maps/game.lua')
 	self.width  = self.map.width  * self.map.tilewidth
 	self.height = self.map.height * self.map.tileheight
 

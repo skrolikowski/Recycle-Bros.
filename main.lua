@@ -21,5 +21,5 @@ love.window.setMode( Config.world.width, Config.world.height)
 --
 function love.load()
     Gamestate.registerEvents()
-    Gamestate.switch(Gamestates['game'])
+    Gamestate.switch(Gamestates['title'])
 end

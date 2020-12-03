@@ -8,7 +8,7 @@ local World  = Modern:extend()
 --
 function World:new(game)
 	self.game   = game
-	self.map    = sti('res/maps/test.lua')
+	self.map    = sti('res/maps/game.lua')
 	self.width  = self.map.width  * self.map.tilewidth
 	self.height = self.map.height * self.map.tileheight
 	self.grid   = Grid(self, self.map.tilewidth)
