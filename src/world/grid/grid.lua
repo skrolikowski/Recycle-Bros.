@@ -9,8 +9,8 @@ local Grid   = Modern:extend()
 function Grid:new(world, cellSize)
 	self.world    = world
 	self.cellSize = cellSize or 16
-	self.rows     = _.__floor(world.height / self.cellSize)
-	self.cols     = _.__floor(world.width  / self.cellSize)
+	self.rows     = floor(world.height / self.cellSize)
+	self.cols     = floor(world.width  / self.cellSize)
 	self.cells    = {}
 
 	--
@@ -73,8 +73,8 @@ end
 -- Query - get cell at x/y-coords
 --
 function Grid:queryRowColAtPoint(x, y)
-	return _.__floor(y / self.cellSize) + 1,
-	       _.__floor(x / self.cellSize) + 1
+	return floor(y / self.cellSize) + 1,
+	       floor(x / self.cellSize) + 1
 end
 
 -- Query - get row/col at x/y-coords

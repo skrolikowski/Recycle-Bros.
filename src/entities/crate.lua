@@ -7,7 +7,7 @@ local Crate = Base:extend()
 -- New
 --
 function Crate:new(data)
-	Base.new(self, _:merge({ name = 'crate' }, data))
+	Base.new(self, 'crate', data)
 
 	--
 	-- sprite
