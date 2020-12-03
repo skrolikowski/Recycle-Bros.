@@ -51,8 +51,18 @@ end
 -- Tear down
 --
 function World:destroy()
-    for i = #self.items, 1, -1 do
-        table.remove(self.items, i)
+    for __, item in pairs(self.items) do
+    	self:remove(item)
+    end
+end
+
+-- Clear items
+--
+function World:clear()
+    for __, item in pairs(self.items) do
+    	if item.name == 'crate' then
+    		self:remove(item)
+    	end
     end
 end
 

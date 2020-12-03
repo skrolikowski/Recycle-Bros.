@@ -72,8 +72,12 @@ function Title:draw()
 		self.world:draw()
 	lg.pop()
 
-	-- text
+	-- top score
 	lg.setColor(Config.color.white)
+	lg.setFont(Config.ui.font.sm)
+	lg.printf("Top Score: "..SAVE['hiScore'], 0, h*0.025, w*0.95, 'right')
+
+	-- text
 	lg.setFont(Config.ui.font.lg)
 	lg.printf("Recycle Bros", 0, h*0.3, w, 'center')
 

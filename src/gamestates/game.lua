@@ -189,6 +189,7 @@ function Game:restart()
 	self.ticks  = 0
 
 	--
+	self.world:clear()
 	self:nextWave()
 end
 
