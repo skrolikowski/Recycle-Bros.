@@ -99,12 +99,13 @@ end
 -- Get item supporting crate
 --
 function Crate:getSupport()
-	local cell  = self:cell():below()
-	local items = cell.items
+	local cell = self:cell():below()
 
-	for __, item in pairs(items) do
-		if item.name == 'belt' or item.name == 'bot' then
-			return item
+	if cell and cell.items then
+		for __, item in pairs(cell.items) do
+			if item.name == 'belt' or item.name == 'bot' then
+				return item
+			end
 		end
 	end
 

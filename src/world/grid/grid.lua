@@ -8,9 +8,9 @@ local Grid   = Modern:extend()
 --
 function Grid:new(world, cellSize)
 	self.world    = world
-	self.cellSize = cellSize or 16
-	self.rows     = floor(world.height / self.cellSize)
-	self.cols     = floor(world.width  / self.cellSize)
+	self.cellSize = Config.world.tileSize
+	self.rows     = Config.game.boundsY.max
+	self.cols     = Config.game.boundsX.max
 	self.cells    = {}
 
 	--

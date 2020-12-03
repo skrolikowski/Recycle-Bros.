@@ -45,7 +45,6 @@ Config.world.height   = 96 * Config.world.scale
 -- Game Configurations
 --
 Config.game = {
-	botBounds = { min = 3, max = 9  },
 	boundsX   = { min = 1, max = 12 },
 	boundsY   = { min = 1, max = 10 },
 	maxMisses = 3,

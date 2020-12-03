@@ -7,12 +7,9 @@ local World  = Modern:extend()
 -- New
 --
 function World:new(game)
-	self.game   = game
-	self.map    = sti('res/maps/game.lua')
-	self.width  = self.map.width  * self.map.tilewidth
-	self.height = self.map.height * self.map.tileheight
-	self.grid   = Grid(self, self.map.tilewidth)
-	self.items  = {}
+	self.game  = game
+	self.grid  = Grid(self)
+	self.items = {}
 end
 
 -- Add to world
@@ -54,8 +51,18 @@ end
 -- Tear down
 --
 function World:destroy()
-    for i = #self.items, 1, -1 do
-        table.remove(self.items, i)
+    for __, item in pairs(self.items) do
+    	self:remove(item)
+    end
+end
+
+-- Clear items
+--
+function World:clear()
+    for __, item in pairs(self.items) do
+    	if item.name == 'crate' then
+    		self:remove(item)
+    	end
     end
 end
 

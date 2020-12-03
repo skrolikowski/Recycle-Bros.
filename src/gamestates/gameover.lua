@@ -26,6 +26,16 @@ function GameOver:draw()
 	lg.setFont(Config.ui.font.md)
 	lg.printf("You've Been Recycled", 0, h*0.2, w, 'center')
 	lg.printf("Points - "..self.from.points, 0, h*0.4, w, 'center')
+
+	--
+	lg.setFont(Config.ui.font.sm)
+	lg.printf("[r]etry",  w*0.25, h*0.5, w*0.5, 'left')
+	lg.printf("[esc]ape", w*0.25, h*0.5, w*0.5, 'right')
+
+	if SAVE['hiScore'] == self.from.points then
+		lg.setFont(Config.ui.font.md)
+		lg.printf("New Top Score!",  0, h*0.55, w, 'center')
+	end
 end
 
 -- Controls
