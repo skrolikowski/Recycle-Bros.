@@ -7,9 +7,7 @@ local Bot  = Base:extend()
 -- New
 --
 function Bot:new(data)
-	Base.new(self, _:merge({
-		name = data.name or 'bot'
-	}, data))
+	Base.new(self, 'bot', data)
 
 	self.image = lg.newImage("res/sprites/bot_" .. self.color .. ".png")
 	self.image:setFilter("nearest", "nearest")

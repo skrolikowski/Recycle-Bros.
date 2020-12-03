@@ -167,7 +167,7 @@ function Game:tick()
 
 	-- spawn new item
 	if self.ticks % 2 == 0 then
-		local pick    = _.__random(#self.spawns)
+		local pick    = random(#self.spawns)
 		local spawner = self.spawns[pick]
 
 		spawner:spawn()

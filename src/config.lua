@@ -11,6 +11,20 @@ lt = love.timer
 lx = love.math
 lw = love.window
 --
+lower  = string.lower
+upper  = string.upper
+format = string.format
+gsub   = string.gsub
+abs    = math.abs
+ceil   = math.ceil
+floor  = math.floor
+max    = math.max
+min    = math.min
+random = math.random
+sqrt   = math.sqrt
+
+----
+--
 Config = {}
 Config.debug = false
 
@@ -38,11 +52,9 @@ Config.game = {
 --
 Config.color = {
 	none    = { 1, 1, 1, 0 },
-	debug   = { _:color('red-800') },
-	red     = { _:color('red-500') },
-	blue    = { _:color('blue-500') },
-	white   = { _:color('white') },
-	black   = { _:color('black') },
+	debug   = { 1, 0, 0, 1 },
+	white   = { 1, 1, 1, 1 },
+	black   = { 0, 0, 0, 1 },
 	overlay = { 0, 0, 0, 0.65 },
 }
 
@@ -89,5 +101,5 @@ end
 --
 Formula = {
 	tick   = function(x) return 0.95^x + 0.75 end,
-	points = function(x) return _.__floor(10 * (x ^ 1.15)) end,
+	points = function(x) return floor(10 * (x ^ 1.15)) end,
 }

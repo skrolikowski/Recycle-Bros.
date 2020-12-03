@@ -7,8 +7,7 @@ local Belt = Base:extend()
 -- New
 --
 function Belt:new(data)
-	Base.new(self, _:merge({ name = 'belt' }, data))
-	--
+	Base.new(self, 'belt', data)
 end
 
 return Belt

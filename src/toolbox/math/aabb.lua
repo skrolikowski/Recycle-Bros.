@@ -30,11 +30,11 @@ end
 local function nearest(aabb, point)
     local t = {
         -- x-checks
-        { d = _.__abs(point.x - aabb.left),  p = Vec2(aabb.left,  point.y) },
-        { d = _.__abs(aabb.right - point.x), p = Vec2(aabb.right, point.y) },
+        { d = abs(point.x - aabb.left),  p = Vec2(aabb.left,  point.y) },
+        { d = abs(aabb.right - point.x), p = Vec2(aabb.right, point.y) },
         -- y-checks
-        { d = _.__abs(point.y - aabb.top),    p = Vec2(point.x, aabb.top) },
-        { d = _.__abs(aabb.bottom - point.y), p = Vec2(point.x, aabb.bottom) }
+        { d = abs(point.y - aabb.top),    p = Vec2(point.x, aabb.top) },
+        { d = abs(aabb.bottom - point.y), p = Vec2(point.x, aabb.bottom) }
     }
 
     -- sort by distance
@@ -70,8 +70,8 @@ end
 -- bounding box center
 --
 function AABB:center()
-    return self.left + _.__floor(self:width() / 2),
-           self.top  + _.__floor(self:height() / 2)
+    return self.left + floor(self:width() / 2),
+           self.top  + floor(self:height() / 2)
     
 end
 
@@ -106,9 +106,9 @@ function AABB:contains(...)
 
     if #args == 2 then
         return containsPoint(self, Vec2(args[1], args[2]))
-    elseif _.__lower(args[1].__name) == 'vec2' then
+    elseif lower(args[1].__name) == 'vec2' then
         return containsPoint(self, args[1])
-    elseif _.__lower(args[1].__name) == 'aabb' then
+    elseif lower(args[1].__name) == 'aabb' then
         return containsAABB(self, args[1])
     end
 
@@ -171,17 +171,17 @@ end
 --
 function AABB:expand(other)
     return AABB(
-        _.__min(self.left,   other.left),
-        _.__min(self.top,    other.top),
-        _.__max(self.right,  other.right),
-        _.__max(self.bottom, other.bottom)
+        min(self.left,   other.left),
+        min(self.top,    other.top),
+        max(self.right,  other.right),
+        max(self.bottom, other.bottom)
     )
 end
 
 -- generate new AABB translated
 -- 
 function AABB:translate(tx, ty)
-    if not _:isNumber(tx) and _.__lower(tx.__name) == 'vec2' then
+    if not type(tx) == 'number' and lower(tx.__name) == 'vec2' then
         tx, ty = tx:unpack()
     end
 
@@ -268,8 +268,8 @@ function AABB:compute(cx, cy, width, height, rotation)
     local x4, y4 = Vec2(-width / 2,  height / 2):rotate(rotation):unpack()
 
     -- extents of rotated AABB
-    local ex = _.__max(x1, x2, x3, x4)
-    local ey = _.__max(y1, y2, y3, y4)
+    local ex = max(x1, x2, x3, x4)
+    local ey = max(y1, y2, y3, y4)
 
     -- new top,left/right/bottom coordinates
     x1 = cx - ex

@@ -7,7 +7,7 @@ local Spawn = Base:extend()
 -- New
 --
 function Spawn:new(data)
-	Base.new(self, _:merge({ name = 'spawn' }, data))
+	Base.new(self, 'spawn', data)
 end
 
 -- Spawn item
