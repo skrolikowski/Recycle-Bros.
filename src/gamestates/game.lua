@@ -127,6 +127,12 @@ end
 function Game:addPoint()
 	self.points = self.points + 1
 
+	-- update hiScore?
+	if self.points > SAVE['hiScore'] then
+		saveGame({ hiScore = self.points })
+	end
+
+	-- next wave?
 	if self.points >= self.maxPoints then
 		self:nextWave()
 	end

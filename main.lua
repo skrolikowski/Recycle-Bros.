@@ -20,6 +20,34 @@ lw.setMode( Config.world.width, Config.world.height)
 -- load
 --
 function love.load()
+	loadGame()
+	--
     Gamestate.registerEvents()
     Gamestate.switch(Gamestates['game'])
+end
+
+---- ---- ---- ----
+
+-- New Game
+--
+function newGame()
+	SAVE = Saver:save('recycle-bros', {
+		hiScore = 0
+	})
+end
+
+-- Load Game
+--
+function loadGame()
+	if Saver:exists('recycle-bros') then
+		SAVE = Saver:load('recycle-bros')
+	else
+		newGame()
+	end
+end
+
+-- Save Game
+--
+function saveGame(data)
+	SAVE = Saver:save('recycle-bros', Util:merge(SAVE, data))
 end
