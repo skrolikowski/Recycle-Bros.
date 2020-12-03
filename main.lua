@@ -31,7 +31,7 @@ end
 -- New Game
 --
 function newGame()
-	SAVE = Saver:save('space-bum-returns', {
+	SAVE = Saver:save('recycle-bros', {
 		hiScore = 0
 	})
 end
