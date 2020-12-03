@@ -6,10 +6,10 @@ local Entity = Base:extend()
 
 -- New
 --
-function Entity:new(data)
+function Entity:new(name, data)
 	self.game   = data.game
 	self.id     = Util:uuid()
-	self.name   = data.name   or 'entity'
+	self.name   = name or 'entity'
 	self.row    = data.row    or 0
 	self.col    = data.col    or 0
 	self.minRow = data.minRow or 0

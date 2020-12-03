@@ -39,7 +39,7 @@ function Title:enter(from, ...)
 	self.spawns = self.world:queryByName('spawn')
 
 	-- set ticker
-	local delay = Formula.tick(10)
+	local delay = Formula.tick(100000000)
 
 	self.ticker = self.timer:every(delay, function()
 		self:tick()
@@ -110,7 +110,7 @@ function Title:tick()
 
 	-- spawn new item
 	if self.ticks % 2 == 0 then
-		local pick    = _.__random(#self.spawns)
+		local pick    = random(#self.spawns)
 		local spawner = self.spawns[pick]
 
 		spawner:spawn()

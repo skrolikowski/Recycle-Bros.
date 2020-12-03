@@ -7,8 +7,11 @@ local Belt = Base:extend()
 -- New
 --
 function Belt:new(data)
-	Base.new(self, _:merge({ name = 'belt' }, data))
+	Base.new(self, 'belt', data)
+
 	--
+	-- properties
+	self.axis = Vec2(self.props.dx or 0, self.props.dy or 0)
 end
 
 return Belt

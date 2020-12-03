@@ -60,13 +60,13 @@ function Game:enter(from, ...)
 	Base.enter(self, from, ...)
 	--
 
+	-- world properties
+	self.world = World(self)
+
 	-- map
 	self.map    = sti('res/maps/game.lua')
 	self.width  = self.map.width  * self.map.tilewidth
 	self.height = self.map.height * self.map.tileheight
-
-	-- world properties
-	self.world = World(self)
 
 	-- spawn entities
 	Spawner(self, self.map.layers):load('Belt','Spawn')
@@ -127,6 +127,12 @@ end
 function Game:addPoint()
 	self.points = self.points + 1
 
+	-- update hiScore?
+	if self.points > SAVE['hiScore'] then
+		saveGame({ hiScore = self.points })
+	end
+
+	-- next wave?
 	if self.points >= self.maxPoints then
 		self:nextWave()
 	end
@@ -167,7 +173,7 @@ function Game:tick()
 
 	-- spawn new item
 	if self.ticks % 2 == 0 then
-		local pick    = _.__random(#self.spawns)
+		local pick    = random(#self.spawns)
 		local spawner = self.spawns[pick]
 
 		spawner:spawn()

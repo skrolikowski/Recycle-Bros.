@@ -11,8 +11,26 @@ lt = love.timer
 lx = love.math
 lw = love.window
 --
+lower  = string.lower
+upper  = string.upper
+format = string.format
+gsub   = string.gsub
+abs    = math.abs
+ceil   = math.ceil
+floor  = math.floor
+max    = math.max
+min    = math.min
+random = math.random
+sqrt   = math.sqrt
+
+-- randomize!
+math.randomseed(os.time())
+
+----
+--
 Config = {}
-Config.debug = false
+Config.debug  = false
+Config.bgmVol = 0.35
 
 --------------------
 -- World Constants
@@ -38,11 +56,9 @@ Config.game = {
 --
 Config.color = {
 	none    = { 1, 1, 1, 0 },
-	debug   = { _:color('red-800') },
-	red     = { _:color('red-500') },
-	blue    = { _:color('blue-500') },
-	white   = { _:color('white') },
-	black   = { _:color('black') },
+	debug   = { 1, 0, 0, 1 },
+	white   = { 1, 1, 1, 1 },
+	black   = { 0, 0, 0, 1 },
 	overlay = { 0, 0, 0, 0.65 },
 }
 
@@ -82,12 +98,12 @@ Config.bgm = {
 }
 
 for name, source in pairs(Config.bgm) do
-	source:setVolume(0.4)
+	source:setVolume(Config.bgmVol)
 	source:setLooping(true)
 end
 
 --
 Formula = {
 	tick   = function(x) return 0.95^x + 0.75 end,
-	points = function(x) return _.__floor(10 * (x ^ 1.15)) end,
+	points = function(x) return floor(10 * (x ^ 1.15)) end,
 }

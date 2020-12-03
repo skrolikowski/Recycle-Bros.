@@ -7,7 +7,7 @@ local Spawn = Base:extend()
 -- New
 --
 function Spawn:new(data)
-	Base.new(self, _:merge({ name = 'spawn' }, data))
+	Base.new(self, 'spawn', data)
 end
 
 -- Spawn item
@@ -17,7 +17,6 @@ function Spawn:spawn()
 		game = self.game,
 		row  = self.row,
 		col  = self.col,
-		axis = Vec2(self.props.dx or 0, self.props.dy or 0),
 	})
 end
 

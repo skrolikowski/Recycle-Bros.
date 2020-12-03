@@ -238,9 +238,7 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {
-            ["dx"] = -1
-          }
+          properties = {}
         },
         {
           id = 43,
@@ -253,9 +251,7 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {
-            ["dx"] = 1
-          }
+          properties = {}
         }
       }
     },
@@ -281,7 +277,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = -1
+          }
         },
         {
           id = 44,
@@ -294,7 +292,9 @@ return {
           height = 8,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["dx"] = 1
+          }
         }
       }
     }
