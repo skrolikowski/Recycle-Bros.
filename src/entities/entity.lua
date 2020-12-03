@@ -12,6 +12,8 @@ function Entity:new(data)
 	self.name   = data.name   or 'entity'
 	self.row    = data.row    or 0
 	self.col    = data.col    or 0
+	self.minRow = data.minRow or 0
+	self.maxRow = data.maxRow or 0
 	self.width  = data.width  or Config.world.tileSize
 	self.height = data.height or Config.world.tileSize
 	self.color  = data.color  or Config.color.black
@@ -50,7 +52,7 @@ end
 function Entity:container()
 	local x, y = self:position()
 	local w, h = self:dimensions()
-	
+
 	return x, y, w, h
 end
 
