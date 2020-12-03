@@ -23,10 +23,14 @@ min    = math.min
 random = math.random
 sqrt   = math.sqrt
 
+-- randomize!
+math.randomseed(os.time())
+
 ----
 --
 Config = {}
-Config.debug = false
+Config.debug  = false
+Config.bgmVol = 0.35
 
 --------------------
 -- World Constants
@@ -94,7 +98,7 @@ Config.bgm = {
 }
 
 for name, source in pairs(Config.bgm) do
-	source:setVolume(0.4)
+	source:setVolume(Config.bgmVol)
 	source:setLooping(true)
 end
 
