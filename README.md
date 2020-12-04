@@ -18,3 +18,4 @@ The game must have a maximum resolution of 96 pixels by 96 pixels. Imagine you'r
 - [Kenney Mini](https://www.kenney.nl/assets/kenney-fonts) - font
 - [Kenney Digital Audio](https://www.kenney.nl/assets/digital-audio) - sound effects
 - [Bip Bop](https://joshua-mclean.itch.io) - background music
+- [Recycle](https://www.dreamstime.com/chuckchee_info) - logo
