@@ -1,4 +1,4 @@
-# Major Jam 3: Retro
+# Recycle Bros.
 A game made for the [Major Jam 3: Retro](https://itch.io/jam/major-jam-3) Game Jam hosted on [itch.io](https://itch.io/).
 
 ### Limitation
