@@ -4,7 +4,7 @@ function love.conf(t)
     io.stdout:setvbuf('no')
 
     t.identity = 'recycle-bros'
-    t.version  = '11.2'
+    t.version  = '11.3'
     t.console  = false
 
     t.window.title      = 'Recycle Bros.'
