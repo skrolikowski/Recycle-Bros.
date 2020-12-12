@@ -82,7 +82,7 @@ function Title:draw()
 	lg.printf("Recycle Bros", 0, h*0.43, w, 'center')
 
 	lg.setFont(Config.ui.font.sm)
-	lg.printf("v1.0", 0, h*0.5, w, 'center')
+	lg.printf("v1.1", 0, h*0.5, w, 'center')
 
 	lg.setFont(Config.ui.font.md)
 	blinkSpeed = 0.75

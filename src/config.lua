@@ -103,6 +103,6 @@ end
 
 --
 Formula = {
-	tick   = function(x) return 0.95^x + 0.75 end,
+	tick   = function(x) return 0.95^x + 0.45 end,
 	points = function(x) return floor(10 * (x ^ 1.15)) end,
 }

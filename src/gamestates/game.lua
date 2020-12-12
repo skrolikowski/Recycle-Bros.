@@ -119,6 +119,7 @@ function Game:addMiss()
 
 	if self.misses >= Config.game.maxMisses then
 		self:gameOver()
+		self:gameOver()
 	end
 end
 
@@ -196,7 +197,9 @@ end
 -- Game over - too many misses
 --
 function Game:gameOver()
-	Gamestate.push(Gamestates['gameover'])
+	if Gamestate:current().name == 'game' then
+		Gamestate.push(Gamestates['gameover'])
+	end
 end
 
 -- Exit
